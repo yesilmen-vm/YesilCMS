@@ -1,0 +1,32 @@
+{
+  "description": "The CodeIgniter framework",
+  "name": "codeigniter/framework",
+  "type": "project",
+  "homepage": "https://codeigniter.com",
+  "license": "MIT",
+  "support": {
+    "forum": "https://forum.codeigniter.com/",
+    "wiki": "https://github.com/bcit-ci/CodeIgniter/wiki",
+    "slack": "https://codeigniterchat.slack.com",
+    "source": "https://github.com/bcit-ci/CodeIgniter"
+  },
+  "require": {
+    "php": "~7.2",
+    "paypal/rest-api-sdk-php": "^1.14",
+    "laizerox/php-wowemu-auth": "^1.0",
+    "ext-gmp": "*",
+    "ext-soap": "*",
+    "ext-json": "*",
+    "ext-ctype": "*",
+    "ext-curl": "*",
+    "ext-mysqli": "*",
+    "ext-redis": "*"
+  },
+  "suggest": {
+    "paragonie/random_compat": "Provides better randomness in PHP 5.x"
+  },
+  "require-dev": {
+    "mikey179/vfsstream": "1.6.*",
+    "phpunit/phpunit": "9.*"
+  }
+}

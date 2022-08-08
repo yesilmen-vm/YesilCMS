@@ -1,0 +1,846 @@
+.bg-alliance {
+  background-image: url(../images/bgs/bg-alliance.jpg);
+}
+
+.bg-horde {
+  background-image: url(../images/bgs/bg-horde.jpg);
+}
+
+/* faction */
+.color-tooltip-alliance {
+  color: #247FAA;
+}
+
+.color-tooltip-horde {
+  color: #b30000;
+}
+
+/* warrior */
+.color-c1,
+.color-c1 a {
+  color: #c69b6d;
+}
+
+/* paladin */
+
+.color-c2,
+.color-c2 a {
+  color: #f48cba;
+}
+
+/* hunter */
+
+.color-c3,
+.color-c3 a,
+.color-g2 {
+  color: #aad372;
+}
+
+/* rogue */
+
+.color-c4,
+.color-c4 a,
+.color-g1 {
+  color: #fff468;
+}
+
+/* priest */
+
+.color-c5,
+.color-c5 a {
+  color: #f0ebe0;
+}
+
+/* shaman */
+.color-c7,
+.color-c7 a {
+  color: #2359ff;
+}
+
+/* mage */
+
+.color-c8,
+.color-c8 a,
+.color-g3 {
+  color: #68ccef;
+}
+
+/* warlock */
+
+.color-c9,
+.color-c9 a {
+  color: #9382c9;
+}
+
+/* druid */
+.color-c11,
+.color-c11 a,
+.color-g4 {
+  color: #ff7c0a;
+}
+
+.meta-socket-requires {
+  padding-left: 27px;
+}
+
+.stats-secondary {
+  margin-top: 20px !important;
+}
+
+.ability-med {
+  padding: 10px;
+  display: table;
+  border-collapse: collapse;
+}
+
+.ability-med-image {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  min-width: 64px;
+  width: 64px;
+  height: 64px;
+}
+
+.ability-med-text {
+  font-size: .875rem;
+  padding: 0 10px;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.cs-name {
+  font-size: 1rem;
+  line-height: 1.5;
+  font-family: Semplicita Pro, Open Sans, Arial, Helvetica, sans-serif;
+  color: #fff;
+  text-shadow: 0 0 1px transparent, 0 1px 2px rgb(0 0 0 / 80%);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.cs-primary_health {
+  color: #27cc4e;
+}
+
+.cs-secondary_mana {
+  color: #008fff;
+}
+
+.cs-secondary_energy {
+  color: #fffc01; /*#cb9501;*/
+}
+
+.cs-secondary_rage {
+  color: #ab0000;
+}
+
+.cs-stat_stamina {
+  color: #ff8b2d;
+}
+
+.cs-stat_intellect {
+  color: #d26cd1;
+}
+
+.cs-stat_agility {
+  color: #ffd955;
+}
+
+.cs-stat_strength {
+  color: #f33232;
+}
+
+.cs-stat_spirit {
+  color: #0ed59b;
+}
+
+.cs-power_spell {
+  color: #9256ff;
+}
+
+.cs-power_healing {
+  color: #fec1c0;
+}
+
+.cs-power_holy {
+  color: #ff78bb;
+}
+
+.cs-power_fire {
+  color: #f44336;
+}
+
+.cs-power_frost {
+  color: #00bfff;
+}
+
+.cs-power_nature {
+  color: #7eff84;
+}
+
+.cs-power_shadow {
+  color: #b16ce5;
+}
+
+.cs-power_arcane {
+  color: #00bcd4;
+}
+
+.cs-stat_unknown {
+  color: #9e9e9e;
+}
+
+.cs-hit_melee, .cs-hit_spell {
+  color: #1eff0c;
+}
+
+.cs-critical_melee, .cs-critical_ranged, .cs-critical_spell {
+  color: #e01c1c;
+}
+
+.cs-power_attack {
+  color: #ffeb3b;
+}
+
+.cs-power_ranged {
+  color: #8ae71f;
+}
+
+.cs-def_armor {
+  color: #c79c6e;
+}
+
+.cs-def_block {
+  color: #aaabfe;
+}
+
+.cs-def_dodge {
+  color: #ff7efe;
+}
+
+.cs-def_defense {
+  color: #d9a31c;
+}
+
+.cs-def_parry {
+  color: #e6cc80;
+}
+
+.cs-def_mp5 {
+  color: #00f3ff;
+}
+
+.cs-guild {
+  color: #f8b700;
+}
+
+.margin-right-xSmall {
+  margin-right: 5px !important;
+}
+
+.progressbar {
+  background-color: #181818;
+  -webkit-box-shadow: inset 0 0 16px #000;
+  box-shadow: inset 0 0 16px #000;
+  color: #000;
+  position: relative;
+  min-height: 35px;
+}
+
+.progressbar-content {
+  color: #fff;
+  text-shadow: 0 0 1px transparent, 0 1px 2px rgba(0, 0, 0, .8);
+  font-weight: 700;
+  position: relative;
+  text-align: center;
+  padding: 10px 5px 10px 40px;
+  min-height: 1.5em;
+}
+
+.progressbar-content.none {
+  padding: 10px;
+}
+
+.progressbar-border {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 1px solid hsla(0, 0%, 100%, .2);
+  background: transparent;
+  z-index: 1;
+}
+
+.progressbar-progress {
+  background: #1b9601;
+  background: -webkit-gradient(linear, left top, right top, from(#0d4a00), to(#1b9601));
+  background: linear-gradient(90deg, #0d4a00 0, #1b9601);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.profession-logo {
+  background-position: 0;
+  background-size: 35px;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin-left: 5px;
+}
+
+.cp-padding {
+  padding: 0 calc(8px + 1.5625vw) 0 calc(8px + 1.5625vw);
+}
+
+.cp-main {
+  height: 660px;
+  position: relative
+}
+
+@media (min-width:540px) {
+  .cp-main {
+    height: 680px
+  }
+}
+
+@media (min-width:720px) {
+  .cp-main {
+    height: 700px
+  }
+}
+
+@media (min-width:970px) {
+  .cp-main {
+    height: 720px
+  }
+}
+
+@media (min-width:1200px) {
+  .cp-main {
+    height: 740px
+  }
+}
+
+.cp-gear {
+  position: absolute
+}
+
+.cp-item {
+  position: relative
+}
+
+.cp-item-icon {
+  -webkit-transition: all .25s cubic-bezier(.23, 1, .32, 1) 0s;
+  transition: all .25s cubic-bezier(.23, 1, .32, 1) 0s;
+  -webkit-box-shadow: 0 0 7px -4px hsla(0, 0%, 100%, .25);
+  box-shadow: 0 0 7px -4px hsla(0, 0%, 100%, .25)
+}
+
+.cp-gear-left {
+  left: 0
+}
+
+.cp-gear-right,
+.cp-gear-right:before {
+  right: 0
+}
+
+.cp-gear-left,
+.cp-gear-right {
+  top: 0
+}
+
+.cp-gear-left .cp-item,
+.cp-gear-right .cp-item {
+  margin: 5px 0
+}
+
+@media (min-width:540px) {
+
+  .cp-gear-left .cp-item,
+  .cp-gear-right .cp-item {
+    margin: 10px 0
+  }
+}
+
+.cp-gear-bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: space-around;
+  -ms-flex-align: space-around;
+  align-items: space-around;
+  bottom: 80px;
+  width: 100%
+}
+
+.cp-gear-bottom .cp-item {
+  margin: 0 80px
+}
+
+@media (min-width:540px) {
+  .cp-gear-bottom .cp-item {
+    margin: 0 3px
+  }
+}
+
+.cp-gear-bottom .cp-item {
+  position: absolute
+}
+
+.cp-gear-bottom .cp-item:first-child {
+  left: 45%;
+  margin-left: -90px
+}
+
+@media (min-width:980px) {
+  .cp-gear-bottom .cp-item:first-child {
+    margin-left: -80px
+  }
+}
+
+.cp-gear-bottom .cp-item:not(:first-child):not(:last-child) {
+  right: 55%;
+  margin-right: -40px
+}
+
+@media (min-width:980px) {
+  .cp-gear-bottom .cp-item:not(:first-child):not(:last-child) {
+    margin-right: -60px
+  }
+}
+
+.cp-gear-bottom .cp-item:last-child {
+  right: 45%;
+  margin-right: -90px
+}
+
+@media (min-width:980px) {
+  .cp-gear-bottom .cp-item:last-child {
+    margin-right: -80px
+  }
+}
+
+.cp-gear-bottom .cp-item:last-child .cp-itemDetails,
+.cp-gear-left .cp-itemDetails {
+  left: 100%
+}
+
+.cp-gear-bottom .cp-item:not(:first-child):not(:last-child) .cp-itemDetails,
+.cp-gear-right .cp-itemDetails {
+  left: 100%;
+}
+
+.cp-gear-bottom .cp-item:first-child .cp-itemDetails,
+.cp-gear-right .cp-itemDetails {
+  right: 100%;
+  text-align: right
+}
+
+.cp-gameicon {
+  position: relative;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: #000;
+  display: inline-block;
+  max-width: 64px;
+  width: 60px;
+  border: 1px solid #504137
+}
+
+.cp-gameicon:before {
+  content: "";
+  display: block;
+  padding-top: 100%
+}
+
+.cp-gameicon-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  background-size: cover;
+  border-radius: 9%
+}
+
+.cp-gameicon-huge {
+  width: 64px
+}
+
+.cp-gameicon-large {
+  width: 56px
+}
+
+.cp-gameicon-medium {
+  width: 32px
+}
+
+.cp-gameicon-small {
+  width: 24px
+}
+
+.cp-gameicon-tiny {
+  width: 16px
+}
+
+.cp-gameicon-full {
+  width: 100%
+}
+
+.cp-gameicon-centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%)
+}
+
+.cp-gameicon-slot {
+  border: 1px solid #333
+}
+
+.cp-gameicon-slot .cp-gameicon-icon {
+  background-image: url(../images/charSlots.png);
+  border-radius: 0
+}
+
+.cp-gameicon-slotHead .cp-gameicon-icon {
+  background-position: 0 0
+}
+
+.cp-gameicon-slotNeck .cp-gameicon-icon {
+  background-position: 0 -100%
+}
+
+.cp-gameicon-slotShoulders .cp-gameicon-icon {
+  background-position: 0 -200%
+}
+
+.cp-gameicon-slotBack .cp-gameicon-icon {
+  background-position: 0 -1600%
+}
+
+.cp-gameicon-slotChest .cp-gameicon-icon {
+  background-position: 0 -300%
+}
+
+.cp-gameicon-slotTabard .cp-gameicon-icon {
+  background-position: 0 -400%
+}
+
+.cp-gameicon-slotShirt .cp-gameicon-icon {
+  background-position: 0 -500%
+}
+
+.cp-gameicon-slotWrists .cp-gameicon-icon {
+  background-position: 0 -600%
+}
+
+.cp-gameicon-slotHands .cp-gameicon-icon {
+  background-position: 0 -700%
+}
+
+.cp-gameicon-slotWaist .cp-gameicon-icon {
+  background-position: 0 -800%
+}
+
+.cp-gameicon-slotLegs .cp-gameicon-icon {
+  background-position: 0 -900%
+}
+
+.cp-gameicon-slotFeet .cp-gameicon-icon {
+  background-position: 0 -1000%
+}
+
+.cp-gameicon-slotFinger1 .cp-gameicon-icon,
+.cp-gameicon-slotFinger2 .cp-gameicon-icon {
+  background-position: 0 -1100%
+}
+
+.cp-gameicon-slotTrinket1 .cp-gameicon-icon,
+.cp-gameicon-slotTrinket2 .cp-gameicon-icon {
+  background-position: 0 -1200%
+}
+
+.cp-gameicon-slotMainhand .cp-gameicon-icon {
+  background-position: 0 -1300%
+}
+
+.cp-gameicon-slotOffhand .cp-gameicon-icon {
+  background-position: 0 -1400%
+}
+
+.cp-gameicon-slotRanged .cp-gameicon-icon {
+  background-position: 0 -1500%
+}
+
+.cp-gameicon-0 {
+  border-color: #9d9d9d
+}
+
+.cp-gameicon-1 {
+  border-color: #fff
+}
+
+.cp-gameicon-2 {
+  border-color: #1eff00
+}
+
+.cp-gameicon-3 {
+  border-color: #0081ff
+}
+
+.cp-gameicon-4 {
+  border-color: #c600ff
+}
+
+.cp-gameicon-5 {
+  border-color: #ff8000
+}
+
+.cp-gameicon-6 {
+  border-color: #e5cc80
+}
+
+.cp-gameicon-99 {
+  border-color: #00ccff
+}
+
+.padding-bottom-small {
+  padding-bottom: 10px !important;
+}
+
+@media (min-width:540px) {
+  .cp-header {
+    display: table;
+    position: relative
+  }
+
+  .cp-header .cp-header-character {
+    margin-bottom: 0
+  }
+
+  .cp-header .cp-header-name-title {
+    padding-right: 20px;
+    margin-right: 20px;
+    border-right: 1px solid hsla(0, 0%, 100%, .2)
+  }
+}
+
+.cp-header-info {
+  display: table-cell;
+  vertical-align: middle;
+  height: 100%
+}
+
+.cp-header-character {
+  display: table;
+  position: relative;
+  margin-bottom: 10px
+}
+
+.cp-header-title {
+  font-size: 1.08rem;
+  line-height: 1.5;
+  font-family: Open Sans, Arial, Helvetica, sans-serif;
+  color: #fff;
+  text-shadow: 0 0 1px transparent, 0 1px 2px rgba(0, 0, 0, .8);
+  font-weight: 700;
+  max-width: 350px
+}
+
+@media (min-width:720px) {
+  .cp-header-title {
+    font-size: 1.224rem
+  }
+}
+
+@media (min-width:1280px) {
+  .cp-header-title {
+    font-size: 1.44rem
+  }
+}
+
+.cp-header-logo-area {
+  vertical-align: middle;
+  height: 100%;
+  display: none
+}
+
+@media (min-width:720px) {
+  .cp-header-logo-area {
+    display: block
+  }
+}
+
+.cp-header-logo.cp-logo-Alliance,
+.cp-header-logo.cp-logo-Horde {
+  margin-right: 20px
+}
+
+.cp-logo {
+  background-repeat: no-repeat;
+  background-size: 100%;
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden
+}
+
+.cp-logo {
+  position: relative;
+}
+
+.cp-logo-Alliance {
+  background-image: url(../images/factions/Alliance.svg);
+  position: relative;
+  width: 77.5px;
+}
+
+.cp-logo-Alliance:before {
+  content: "";
+  display: block;
+  padding-top: 130%
+}
+
+.cp-logo-Horde {
+  background-image: url(../images/factions/Horde.svg);
+  position: relative;
+  width: 77.5px;
+}
+
+.cp-logo-Horde:before {
+  content: "";
+  display: block;
+  padding-top: 130%
+}
+
+.cp-header-name-area {
+  display: table-cell;
+  vertical-align: middle;
+  height: 100%
+}
+
+.cp-header-name {
+  font-family: Semplicita Pro, Open Sans, Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 2.2395rem;
+  line-height: 1.5;
+  line-height: 1em
+}
+
+@media (min-width:720px) {
+  .cp-header-name {
+    font-size: 2.5381rem
+  }
+}
+
+@media (min-width:1280px) {
+  .cp-header-name {
+    font-size: 2.986rem
+  }
+}
+
+.cp-header-details {
+  font-size: 1rem;
+  line-height: 1.5
+}
+
+@media (min-width:720px) {
+  .cp-header-details {
+    font-size: 1.02rem
+  }
+}
+
+@media (min-width:1280px) {
+  .cp-header-details {
+    font-size: 1.2rem
+  }
+}
+
+.cp-header-detail {
+  display: inline-block;
+  float: right;
+}
+
+.cp-header-image {
+  display: table-cell;
+  vertical-align: middle;
+  height: 100%;
+  float: left;
+  margin-right: 20px;
+}
+
+.cp-bg {
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+
+.model-area {
+  max-width: 640px;
+  padding: 5px;
+  margin-top: 20px;
+}
+
+.img-placeholder{
+  height:80%
+}
+
+.model-btn {
+  margin-bottom: 125px
+}
+
+@media (max-width:420px) {
+  .model-btn-sm {
+    margin-bottom: 0 !important;
+  }
+}
+
+.model-btn-alliance {
+  background-color: #111c2e;
+  border: solid 1px #f4bf2a;
+  color: #fff;
+}
+
+.model-btn-horde {
+  background-color: #320b0e;
+  border: solid 1px #f4bf2a;
+  color: #fff;
+}
+
+.model-btn-alliance:hover,
+.model-btn-horde:hover,
+.model-btn-alliance:focus,
+.model-btn-horde:focus {
+  background: #f4bf2a;
+  color: #fff;
+  border-color: #2f0b0b;
+}
+
+.animation-dropdown {
+  display:none;
+}
+
+.model-list {
+  margin-bottom: 95px;
+}
+
+.model-buttonspan {
+  float: right;
+  padding-bottom: 5px;
+}

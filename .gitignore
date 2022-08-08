@@ -1,0 +1,52 @@
+#CI
+*/config/development
+*/logs/log-*.php
+!*/logs/index.html
+*/cache/*
+!system/cache/*
+!*/cache/index.html
+!*/cache/.htaccess
+
+user_guide_src/build/*
+user_guide_src/cilexer/build/*
+user_guide_src/cilexer/dist/*
+user_guide_src/cilexer/pycilexer.egg-info/*
+
+#CI 3
+application/logs/*
+!application/logs/index.html
+!application/logs/.htaccess
+#Disabled for easy installation
+#/vendor/
+
+#Composer
+composer.lock
+
+#PHP CS-Fixer
+.php-cs-fixer.cache
+.php-cs-fixer.php
+
+#IDE
+.idea/*
+!.idea/codeStyles
+!.idea/runConfigurations
+
+# PHPUnit
+/app/phpunit.xml
+/phpunit.xml
+.phpunit.result.cache
+.phpunit.cache
+
+# Build data
+/build/
+
+#Misc
+*.bak
+.DS_Store
+
+### Linux ###
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
