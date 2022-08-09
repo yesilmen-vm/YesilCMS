@@ -28,8 +28,6 @@ composer.lock
 
 #IDE
 .idea/*
-!.idea/codeStyles
-!.idea/runConfigurations
 
 # PHPUnit
 /app/phpunit.xml
