@@ -49,6 +49,9 @@
                         </div>
                         <h5 class="uk-h5 uk-heading-bullet uk-text-uppercase uk-text-bold uk-margin-top uk-margin-small-bottom">reCaptcha</h5>
                         <div class="uk-margin-small">
+                            <div class="uk-alert-warning uk-margin-small" uk-alert>
+                                <p><i class="fas fa-triangle-exclamation"></i> After setting up Key/Secret, do not forget to enable reCapthca Module.</p>
+                            </div>
                             <label class="uk-form-label"><?= $this->lang->line('conf_recaptcha_key'); ?></label>
                             <div class="uk-form-controls">
                                 <div class="uk-inline uk-width-1-1">
@@ -199,26 +202,26 @@
             <div class="uk-modal-body">
                 <?php
 
-                                                            $this->load->library('email');
-    $config = array(
-        'protocol'  => 'smtp',
-        'smtp_host' => $this->config->item('smtp_host'),
-        'smtp_port' => $this->config->item('smtp_port'),
-        'smtp_user' => $this->config->item('smtp_user'),
-        'smtp_pass' => $this->config->item('smtp_pass'),
-        'smtp_crypto' => $this->config->item('smtp_crypto'),
-        'mailtype'  => 'html',
-        'charset'   => 'utf-8'
-    );
-    $this->email->initialize($config);
-    $this->email->set_mailtype("html");
-    $this->email->set_newline("\r\n");
+                $this->load->library('email');
+                $config = array(
+                    'protocol'    => 'smtp',
+                    'smtp_host'   => $this->config->item('smtp_host'),
+                    'smtp_port'   => $this->config->item('smtp_port'),
+                    'smtp_user'   => $this->config->item('smtp_user'),
+                    'smtp_pass'   => $this->config->item('smtp_pass'),
+                    'smtp_crypto' => $this->config->item('smtp_crypto'),
+                    'mailtype'    => 'html',
+                    'charset'     => 'utf-8'
+                );
+                $this->email->initialize($config);
+                $this->email->set_mailtype("html");
+                $this->email->set_newline("\r\n");
 
-    $this->email->from($this->config->item('email_settings_sender'), $this->config->item('email_settings_sender_name'));
-    $this->email->to($this->config->item('email_settings_sender'));
-    $this->email->subject('Test Subject');
-    $this->email->message('Test Message');
-    if ($this->email->send(false)) : ?>
+                $this->email->from($this->config->item('email_settings_sender'), $this->config->item('email_settings_sender_name'));
+                $this->email->to($this->config->item('email_settings_sender'));
+                $this->email->subject('Test Subject');
+                $this->email->message('Test Message');
+                if ($this->email->send(false)) : ?>
                     <div class="uk-alert-success" uk-alert>
                         <a class="uk-alert-close" uk-close></a>
                         <p><i class="far fa-check-circle"></i> Your email was sent successfully, all good!</p>
@@ -237,7 +240,7 @@
         </div>
     </div>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             UIkit.modal("#testEmail").show();
         })
     </script>
@@ -297,7 +300,7 @@
                 [globalThis.csrfName]: globalThis.csrfHash
             },
             dataType: "text",
-            beforeSend: function() {
+            beforeSend: function () {
                 $.amaran({
                     'theme': 'awesome info',
                     'content': {
@@ -312,7 +315,7 @@
                     'outEffect': 'slideRight'
                 });
             },
-            success: function(response) {
+            success: function (response) {
                 if (!response)
                     alert(response);
 
@@ -332,7 +335,7 @@
                     });
                 }
                 $('#updateoptionalForm')[0].reset();
-                setTimeout(function() {
+                setTimeout(function () {
                     window.location = window.location.pathname;
                 }, 3500);
             }
