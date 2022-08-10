@@ -562,39 +562,41 @@ class armory_model extends CI_Model
     public function getCurrentPVPRank($MultiRealm, $id)
     {
         $this->multiRealm    = $MultiRealm;
-        $honorRankPoint      = $this->multiRealm->select('honor_rank_points')->where('guid', $id)->get('characters')->row('honor_rank_points') ?? 0;
         $honorRankPointCache = $this->wowgeneral->getRedisCMS() ? $this->cache->redis->get('honorRankPointFArrayID_' . $id) : false;
 
         if ($honorRankPointCache) {
             $rank = $honorRankPointCache;
         } else {
-            if ($honorRankPoint >= 1 && $honorRankPoint < 2000) {
+            $honorDetails   = $this->multiRealm->select('honor_rank_points, honor_stored_hk')->where('guid', $id)->get('characters');
+            $honorRankPoint = $honorDetails->row('honor_rank_points') ?? 0;
+
+            if ($honorDetails->row('honor_stored_hk') > 15 && $honorRankPoint < 2000) {
                 $rank = array('rank' => 1, 'icon' => 'PvP_R1', 'a_title' => 'Private', 'h_title' => 'Scout');
             } elseif ($honorRankPoint >= 2000 && $honorRankPoint < 5000) {
                 $rank = array('rank' => 2, 'icon' => 'PvP_R2', 'a_title' => 'Corporal', 'h_title' => 'Grunt');
-            } elseif ($honorRankPoint >= 2000 && $honorRankPoint < 5000) {
-                $rank = array('rank' => 3, 'icon' => 'PvP_R3', 'a_title' => 'Sergeant', 'h_title' => 'Sergeant');
             } elseif ($honorRankPoint >= 5000 && $honorRankPoint < 10000) {
-                $rank = array('rank' => 4, 'icon' => 'PvP_R4', 'a_title' => 'Master Sergeant', 'h_title' => 'Senior Sergeant');
+                $rank = array('rank' => 3, 'icon' => 'PvP_R3', 'a_title' => 'Sergeant', 'h_title' => 'Sergeant');
             } elseif ($honorRankPoint >= 10000 && $honorRankPoint < 15000) {
-                $rank = array('rank' => 5, 'icon' => 'PvP_R5', 'a_title' => 'Sergeant Major', 'h_title' => 'First Sergeant');
+                $rank = array('rank' => 4, 'icon' => 'PvP_R4', 'a_title' => 'Master Sergeant', 'h_title' => 'Senior Sergeant');
             } elseif ($honorRankPoint >= 15000 && $honorRankPoint < 20000) {
-                $rank = array('rank' => 6, 'icon' => 'PvP_R6', 'a_title' => 'Knight', 'h_title' => 'Stone Guard');
+                $rank = array('rank' => 5, 'icon' => 'PvP_R5', 'a_title' => 'Sergeant Major', 'h_title' => 'First Sergeant');
             } elseif ($honorRankPoint >= 20000 && $honorRankPoint < 25000) {
-                $rank = array('rank' => 7, 'icon' => 'PvP_R7', 'a_title' => 'Knight-Lieutenant', 'h_title' => 'Blood Guard');
+                $rank = array('rank' => 6, 'icon' => 'PvP_R6', 'a_title' => 'Knight', 'h_title' => 'Stone Guard');
             } elseif ($honorRankPoint >= 25000 && $honorRankPoint < 30000) {
-                $rank = array('rank' => 8, 'icon' => 'PvP_R8', 'a_title' => 'Knight-Captain', 'h_title' => 'Legionnaire');
+                $rank = array('rank' => 7, 'icon' => 'PvP_R7', 'a_title' => 'Knight-Lieutenant', 'h_title' => 'Blood Guard');
             } elseif ($honorRankPoint >= 30000 && $honorRankPoint < 35000) {
-                $rank = array('rank' => 9, 'icon' => 'PvP_R9', 'a_title' => 'Knight-Champion', 'h_title' => 'Centurion');
+                $rank = array('rank' => 8, 'icon' => 'PvP_R8', 'a_title' => 'Knight-Captain', 'h_title' => 'Legionnaire');
             } elseif ($honorRankPoint >= 35000 && $honorRankPoint < 40000) {
-                $rank = array('rank' => 10, 'icon' => 'PvP_R10', 'a_title' => 'Lieutenant Commander', 'h_title' => 'Champion');
+                $rank = array('rank' => 9, 'icon' => 'PvP_R9', 'a_title' => 'Knight-Champion', 'h_title' => 'Centurion');
             } elseif ($honorRankPoint >= 40000 && $honorRankPoint < 45000) {
-                $rank = array('rank' => 11, 'icon' => 'PvP_R11', 'a_title' => 'Commander', 'h_title' => 'Lieutenant General');
+                $rank = array('rank' => 10, 'icon' => 'PvP_R10', 'a_title' => 'Lieutenant Commander', 'h_title' => 'Champion');
             } elseif ($honorRankPoint >= 45000 && $honorRankPoint < 50000) {
-                $rank = array('rank' => 12, 'icon' => 'PvP_R12', 'a_title' => 'Marshal', 'h_title' => 'General');
+                $rank = array('rank' => 11, 'icon' => 'PvP_R11', 'a_title' => 'Commander', 'h_title' => 'Lieutenant General');
             } elseif ($honorRankPoint >= 50000 && $honorRankPoint < 55000) {
+                $rank = array('rank' => 12, 'icon' => 'PvP_R12', 'a_title' => 'Marshal', 'h_title' => 'General');
+            } elseif ($honorRankPoint >= 55000 && $honorRankPoint < 60000) {
                 $rank = array('rank' => 13, 'icon' => 'PvP_R13', 'a_title' => 'Field Marshal', 'h_title' => 'Warlord');
-            } elseif ($honorRankPoint >= 55000) {
+            } elseif ($honorRankPoint >= 60000) {
                 $rank = array('rank' => 14, 'icon' => 'PvP_R14', 'a_title' => 'Grand Marshal', 'h_title' => 'High Warlord');
             } else {
                 $rank = array('rank' => 0, 'icon' => 'PvP_R0', 'a_title' => 'N/A', 'h_title' => 'N/A');

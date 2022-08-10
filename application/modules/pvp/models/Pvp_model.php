@@ -19,7 +19,7 @@ class Pvp_model extends CI_Model
     {
         $this->MultiRealm = $MultiRealm;
 
-        return $this->MultiRealm->select('guid, name, race, class, gender, level, honor_stored_hk')->where('name !=', '')->order_by('honor_stored_hk', 'DESC')->limit('20')->get('characters');
+        return $this->MultiRealm->select('guid, name, race, class, gender, level, honor_rank_points, honor_last_week_cp, honor_stored_hk')->where('name !=', '')->order_by('honor_stored_hk', 'DESC')->limit('20')->get('characters');
     }
 
     public function getKillsByDate($MultiRealm, $id, $date)

@@ -285,9 +285,7 @@ class Realm_model extends CI_Model
     {
         $this->multiRealm = $multiRealm;
 
-        return $this->multiRealm->select('count(guid)')->where('guid', $id)->get('character_honor_cp')->row(
-            'count(guid)'
-        );
+        return $this->multiRealm->select('count(guid)')->where('guid', $id)->get('character_honor_cp')->row('count(guid)');
     }
 
     /**

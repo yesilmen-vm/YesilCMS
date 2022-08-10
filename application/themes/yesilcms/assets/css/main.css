@@ -1369,18 +1369,30 @@ main {
   margin: 15px 0 100px 0 !important;
 }
 
-.pvp-name {
-  color: #f8b700;
+.pvp-name-Alliance {
+  color: #03a9f4;
 }
 
-.pvp-total {
-  color: #e7ad00;
+.pvp-name-Horde {
+  color: #f44336;
+}
+
+.pvp-kill {
+  color: #ecb7ce;
+}
+
+.pvp-honor {
+  color: #aedef0;
+}
+
+.pvp-rank {
+  color: #ffc107;
 }
 
 .pvp-today {
-  color: #ff9800;
+  color: #FCF5D1;
 }
 
 .pvp-yesterday {
-  color: #ff5722;
+  color: #FDECD9;
 }

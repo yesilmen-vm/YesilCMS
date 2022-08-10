@@ -14,6 +14,7 @@ class Pvp extends MX_Controller
     {
         parent::__construct();
         $this->load->model('pvp_model');
+        $this->load->model('Armory/armory_model');
 
         if (! ini_get('date.timezone')) {
             date_default_timezone_set($this->config->item('timezone'));

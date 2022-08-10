@@ -282,7 +282,7 @@ if (! $currentPlayer->row()) {
                                     <img src="<?= base_url() ?>/application/modules/armory/assets/images/stats/<?= $honorInfo->icon ?>.png">
                                 </div>
                                 <div class="ability-med-text">
-                                    <span><?= $this->wowgeneral->getFaction($info->race) == 'Alliance' ? $honorInfo->a_title : $honorInfo->a_title ?> <small>#R<?= $honorInfo->rank ?></small></span>
+                                    <span><?= $this->wowgeneral->getFaction($info->race) == 'Alliance' ? $honorInfo->a_title : $honorInfo->h_title ?> <small>#R<?= $honorInfo->rank ?></small></span>
                                     <div class="cs-name cs-HEALTH">TITLE / <small>#RANK</small></div>
                                 </div>
                             </div>

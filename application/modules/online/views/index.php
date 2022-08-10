@@ -29,9 +29,10 @@
                             </thead>
                             <tbody>
                             <?php if ($this->online_model->getOnlinePlayers($multiRealm)->result()):
-                                foreach ($this->online_model->getOnlinePlayers($multiRealm)->result() as $online): ?>
+                                foreach ($this->online_model->getOnlinePlayers($multiRealm)->result() as $online):
+                                    $faction = $this->wowgeneral->getFaction($online->race); ?>
                                     <tr>
-                                        <td class="uk-text-capitalize uk-text-middle"><a class="pvp-name" href="<?= base_url() . 'armory/character/' . $charsMultiRealm->id . '/' ?><?= $online->guid ?>"><?= $online->name ?></td>
+                                        <td class="uk-text-capitalize uk-text-middle"><a class="pvp-name-<?= $faction ?>" href="<?= base_url() . 'armory/character/' . $charsMultiRealm->id . '/' ?><?= $online->guid ?>"><?= $online->name ?></td>
                                         <td class="uk-text-center uk-text-middle"><?= $online->level ?></td>
                                         <td class="uk-text-center uk-text-middle"><img class="uk-border-rounded" src="<?= base_url('assets/images/factions/' . $this->wowgeneral->getFactionIcon($online->race)); ?>" width="32" height="32" title="<?= $this->wowgeneral->getFaction($online->race); ?>" alt="<?= $this->wowgeneral->getFaction($online->race); ?>"></td>
                                         <td class="uk-text-center uk-text-middle"><img class="uk-border-rounded" src="<?= base_url('assets/images/races/' . $this->wowgeneral->getRaceIcon($online->race)); ?>" width="32" height="32" title="<?= $this->wowgeneral->getRaceName($online->race); ?>" alt="<?= $this->wowgeneral->getRaceName($online->race); ?>"></td>

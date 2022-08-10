@@ -183,6 +183,48 @@ function getAdditionalSpellCrit(int $class, int $intellect): float
 }
 
 /**
+ * @param  int  $rank
+ *
+ * @return string[]
+ */
+function getRankTitle(int $rank): array
+{
+    if ($rank === 1) {
+        $title = [0 => 'Private', 1 => 'Scout'];
+    } elseif ($rank === 2) {
+        $title = [0 => 'Corporal', 1 => 'Grunt'];
+    } elseif ($rank === 3) {
+        $title = [0 => 'Sergeant', 1 => 'Sergeant'];
+    } elseif ($rank === 4) {
+        $title = [0 => 'Master Sergeant', 1 => 'Senior Sergeant'];
+    } elseif ($rank === 5) {
+        $title = [0 => 'Sergeant Major', 1 => 'First Sergeant'];
+    } elseif ($rank === 6) {
+        $title = [0 => 'Knight', 1 => 'Stone Guard'];
+    } elseif ($rank === 7) {
+        $title = [0 => 'Knight-Lieutenant', 1 => 'Blood Guard'];
+    } elseif ($rank === 8) {
+        $title = [0 => 'Knight-Captain', 1 => 'Legionnaire'];
+    } elseif ($rank === 9) {
+        $title = [0 => 'Knight-Champion', 1 => 'Centurion'];
+    } elseif ($rank === 10) {
+        $title = [0 => 'Lieutenant Commander', 1 => 'Champion'];
+    } elseif ($rank === 11) {
+        $title = [0 => 'Commander', 1 => 'Lieutenant General'];
+    } elseif ($rank === 12) {
+        $title = [0 => 'Marshal', 1 => 'General'];
+    } elseif ($rank === 13) {
+        $title = [0 => 'Field Marshal', 1 => 'Warlord'];
+    } elseif ($rank === 14) {
+        $title = [0 => 'Grand Marshal', 1 => 'High Warlord'];
+    } else {
+        $title = [0 => 'N/A', 1 => 'N/A'];
+    }
+
+    return $title;
+}
+
+/**
  * @param  int  $class
  * @param       $spirit
  *
