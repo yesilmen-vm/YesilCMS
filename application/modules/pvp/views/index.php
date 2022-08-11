@@ -34,8 +34,9 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php if ($this->pvp_model->getTop20PVP($multiRealm)->result()):
-                                    foreach ($this->pvp_model->getTop20PVP($multiRealm)->result() as $tops):
+                                <?php $result  = $this->pvp_model->getTop20PVP($multiRealm)->result();
+                                if ($result):
+                                    foreach ($result as $tops):
                                         $faction = $this->wowgeneral->getFaction($tops->race);
                                         $title = $this->armory_model->getCurrentPVPRank($multiRealm, $tops->guid);
                                         $title = $faction == 'Alliance' ? $title->a_title : $title->h_title;

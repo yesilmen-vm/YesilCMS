@@ -19,6 +19,6 @@ class Online_model extends CI_Model
     {
         $this->multirealm = $MultiRealm;
 
-        return $this->multirealm->select('guid, name, race, class, level, zone')->where('online', '1')->order_by('name', 'DESC')->get('characters');
+        return $this->multirealm->select('guid, name, race, class, gender, level, zone')->where('online', '1')->order_by('name', 'DESC')->get('characters');
     }
 }

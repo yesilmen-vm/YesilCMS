@@ -392,7 +392,7 @@ function formatPercentage($inp): string
  */
 function percentageOf($number, $everything): int
 {
-    return ($number / $everything) * 100;
+    return intval(($number / $everything) * 100);
 }
 
 /**

@@ -52,7 +52,7 @@ class User extends MX_Controller
         }
 
         // Return true if module is not enabled, else validate captcha
-        $recaptcha = $this->wowmodule->getreCaptchaStatus() ? $this->recaptcha_validate($this->config->item('recaptcha_secret'), trim($this->input->post('g-recaptcha-response'))) : true;
+        $recaptcha = $this->wowmodule->getreCaptchaStatus() ? $this->recaptcha_validate($this->config->item('recaptcha_secret'), trim($this->input->post('g-recaptcha-response') ?? '')) : true;
 
         $data = [
             'pagetitle' => $this->lang->line('tab_login'),
@@ -121,7 +121,7 @@ class User extends MX_Controller
         }
 
         // Return true if module is not enabled, else validate captcha
-        $recaptcha = $this->wowmodule->getreCaptchaStatus() ? $this->recaptcha_validate($this->config->item('recaptcha_secret'), trim($this->input->post('g-recaptcha-response'))) : true;
+        $recaptcha = $this->wowmodule->getreCaptchaStatus() ? $this->recaptcha_validate($this->config->item('recaptcha_secret'), trim($this->input->post('g-recaptcha-response') ?? '')) : true;
 
         $data = [
             'pagetitle' => $this->lang->line('tab_register'),
@@ -271,7 +271,7 @@ class User extends MX_Controller
     public function forgotpassword()
     {
         // Return true if module is not enabled, else validate captcha
-        $recaptcha = $this->wowmodule->getreCaptchaStatus() ? $this->recaptcha_validate($this->config->item('recaptcha_secret'), trim($this->input->post('recaptcha'))) : true;
+        $recaptcha = $this->wowmodule->getreCaptchaStatus() ? $this->recaptcha_validate($this->config->item('recaptcha_secret'), trim($this->input->post('recaptcha') ?? '')) : true;
 
         if ($recaptcha) {
             $username = $this->input->post('username');

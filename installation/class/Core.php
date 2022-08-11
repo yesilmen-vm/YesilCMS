@@ -105,7 +105,7 @@ class Core
 
     public function PHPVersion()
     {
-        if ((version_compare(PHP_VERSION, '7.1') >= 0) && (version_compare(PHP_VERSION, '8') <= 0)) {
+        if ((version_compare(PHP_VERSION, '7.1') >= 0) && (version_compare(PHP_VERSION, '8.1.9') <= 0)) {
             return true;
         }
     }
