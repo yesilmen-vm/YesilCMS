@@ -21,7 +21,6 @@ class Migration_create_timeline extends CI_Migration
             'description' => array(
                 'type'    => 'JSON',
                 'null'    => false,
-                'default' => '{}',
                 'comment' => 'JSON for MySQL, LONGTEXT for MariaDB'
             ),
             'patch'       => array(

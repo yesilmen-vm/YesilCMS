@@ -21,6 +21,7 @@ In addition to the existing features of BlizzCMS, some of the added features are
   - PvP Stats
   - Ability to show enchants on items (by using WoWHead's tooltip instead of ClassicDB)
   - Ability to show all character stats instead of just base-ones
+- Unique Timeline Module with responsive design and full flexibility.
 - Rest API implementation for future developments.
 - Built-in account activation.
 - Built-in account recovery.
