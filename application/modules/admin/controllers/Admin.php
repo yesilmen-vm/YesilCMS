@@ -3,17 +3,19 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
- * @property $wowauth
- * @property $wowgeneral
- * @property $wowrealm
- * @property $template
- * @property $admin_model
- * @property $update_model
+ * @property Auth_model         $wowauth
+ * @property General_model      $wowgeneral
+ * @property Realm_model        $wowrealm
+ * @property Template           $template
+ * @property Admin_model        $admin_model
+ * @property Update_model       $update_model
+ * @property MY_Form_validation form_validation
+ *
  */
 class Admin extends MX_Controller
 {
-    private string $wowlocadm = '';
-    private string $wowlocdef = '';
+    private $wowlocadm = '';
+    private $wowlocdef = '';
 
     public function __construct()
     {
@@ -1600,5 +1602,190 @@ class Admin extends MX_Controller
         }
 
         $this->template->build('tickets/tickets', $data);
+    }
+
+    public function manage_timeline()
+    {
+        $data = [
+            'pagetitle' => $this->lang->line('button_admin_panel') . ' > ' . $this->lang->line('admin_nav_timeline'),
+            'lang'      => $this->lang->lang()
+        ];
+
+        $this->template->build('timeline/manage_timeline', $data);
+    }
+
+    public function create_timeline()
+    {
+        $data = [
+            'pagetitle' => $this->lang->line('button_admin_panel'),
+            'tiny'      => $this->wowgeneral->tinyEditor('Admin'),
+            'lang'      => $this->lang->lang()
+        ];
+
+        $this->template->build('timeline/create_timeline', $data);
+    }
+
+
+    public function add_timeline()
+    {
+        $this->load->library('form_validation');
+        $this->load->helper('form');
+        $this->form_validation->CI =& $this;
+
+        $this->form_validation->set_error_delimiters('', '');
+        $this->form_validation->set_rules('patch', 'Patch', 'trim|required');
+        $this->form_validation->set_rules('date', 'Date', 'regex_match[/^\d{4}-\d{2}-\d{2}$/]|required');
+        $this->form_validation->set_rules('description', 'Description', 'trim|max_length[10000]|required');
+        $this->form_validation->set_rules('image_file', 'Image', 'callback_validate_image');
+        $this->form_validation->set_rules('order', 'Order', 'trim|numeric|required');
+
+        if ($this->form_validation->run() == false) {
+            echo validation_errors();
+        } else {
+            $description = ['description' => $this->input->post('description'), 'general' => $this->input->post('general'), 'pve' => $this->input->post('pve'), 'pvp' => $this->input->post('pvp')];
+
+            $patch = $this->input->post('patch');
+            $date  = $this->input->post('date');
+            $order = $this->input->post('order');
+
+            $config['upload_path'] = realpath(FCPATH . 'assets/images/timeline');;
+            $config['allowed_types'] = 'jpg|png';
+            $config['overwrite']     = false;
+            $config['encrypt_name']  = true;
+
+
+            $this->load->library('upload', $config);
+
+            if (! $this->upload->do_upload('image_file')) {
+                echo $this->upload->display_errors();
+            } else {
+                $data = $this->upload->data();
+
+                $image = $data['file_name'];
+
+                if ($this->admin_model->addTimeline(json_encode($description), $patch, $date, $order, $image)) {
+                    echo 'true';
+
+                    return true;
+                }
+            }
+        }
+    }
+
+    public function edit_timeline($id)
+    {
+        if (is_null($id) || empty($id)) {
+            redirect(base_url(), 'refresh');
+        }
+
+        if ($this->admin_model->getTimelineRow($id) < 1) {
+            redirect(base_url(), 'refresh');
+        }
+
+        $data = [
+            'pagetitle' => $this->lang->line('button_admin_panel'),
+            'id'        => $id,
+            'tiny'      => $this->wowgeneral->tinyEditor('Admin'),
+            'lang'      => $this->lang->lang()
+        ];
+
+        $this->template->build('timeline/edit_timeline', $data);
+    }
+
+    public function update_timeline()
+    {
+        $image = $_FILES["image_file"]['name'];
+
+        $this->load->library('form_validation');
+        $this->load->helper('form');
+        $this->form_validation->CI =& $this;
+
+        $this->form_validation->set_error_delimiters('', '');
+        $this->form_validation->set_rules('patch', 'Patch', 'trim|required');
+        $this->form_validation->set_rules('date', 'Date', 'regex_match[/^\d{4}-\d{2}-\d{2}$/]|required');
+        $this->form_validation->set_rules('description', 'Description', 'trim|max_length[10000]|required');
+        $this->form_validation->set_rules('order', 'Order', 'trim|numeric|required');
+        if (isset($image) && ! empty($image)) {
+            $this->form_validation->set_rules('image_file', 'Image', 'callback_validate_image');
+        }
+
+
+        if ($this->form_validation->run() == false) {
+            echo validation_errors();
+        } else {
+            $id           = $this->input->post('id');
+            $descrtiption = [];
+            $description  = ['description' => $this->input->post('description'), 'general' => $this->input->post('general'), 'pve' => $this->input->post('pve'), 'pvp' => $this->input->post('pvp')];
+
+            $patch = $this->input->post('patch');
+            $date  = $this->input->post('date');
+            $order = $this->input->post('order');
+
+            if (isset($image) && ! empty($image)) {
+                $config['upload_path'] = realpath(FCPATH . 'assets/images/timeline');;
+                $config['allowed_types'] = 'jpg|png';
+                $config['overwrite']     = false;
+                $config['encrypt_name']  = true;
+
+
+                $this->load->library('upload', $config);
+
+                if (! $this->upload->do_upload('image_file')) {
+                    echo $this->upload->display_errors();
+                } else {
+                    $data = $this->upload->data();
+
+                    $image = $data['file_name'];
+
+                    if ($this->admin_model->updateTimelineEventByID($id, json_encode($description), $patch, $date, $order, $image)) {
+                        echo 'true';
+
+                        return true;
+                    }
+                }
+            } else {
+                if ($this->admin_model->updateTimelineEventByID($id, json_encode($description), $patch, $date, $order)) {
+                    echo 'true';
+
+                    return true;
+                }
+            }
+        }
+    }
+
+    public function delete_timeline()
+    {
+        $id = $this->input->post('value');
+
+        echo $this->admin_model->deleteTimelineByID($id);
+    }
+
+    public function validate_image()
+    {
+        $check = true;
+        if ((! isset($_FILES['image_file'])) || $_FILES['image_file']['size'] == 0) {
+            $this->form_validation->set_message('validate_image', 'The {field} field is required');
+            $check = false;
+        } elseif (isset($_FILES['image_file']) && $_FILES['image_file']['size'] != 0) {
+            $allowedExts  = array("jpg", "png", "JPG", "PNG");
+            $allowedTypes = array(IMAGETYPE_PNG, IMAGETYPE_JPEG, IMAGETYPE_GIF);
+            $extension    = pathinfo($_FILES["image_file"]["name"], PATHINFO_EXTENSION);
+            $detectedType = exif_imagetype($_FILES['image_file']['tmp_name']);
+            $type         = $_FILES['image_file']['type'];
+            if (! in_array($detectedType, $allowedTypes)) {
+                $this->form_validation->set_message('validate_image', 'Invalid image content, please verify your image!');
+                $check = false;
+            }
+            if (filesize($_FILES['image_file']['tmp_name']) > 2097152) {
+                $this->form_validation->set_message('validate_image', 'The Image file size shoud not exceed 2 MB.');
+                $check = false;
+            }
+            if (! in_array($extension, $allowedExts)) {
+                $this->form_validation->set_message('validate_image', "Invalid file extension: {$extension}");
+                $check = false;
+            }
+        }
+
+        return $check;
     }
 }

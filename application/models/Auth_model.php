@@ -5,8 +5,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 use Laizerox\Wowemu\SRP\UserClient;
 
 /**
- * @property             $wowauth
- * @property bool|object $auth
+ * @property Auth_model $wowauth
+ * @property CI_DB_query_builder $auth
  */
 class Auth_model extends CI_Model
 {

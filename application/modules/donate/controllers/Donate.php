@@ -6,11 +6,11 @@ use PayPal\Api\Payment;
 use PayPal\Api\PaymentExecution;
 
 /**
- * @property $wowgeneral
- * @property $wowmodule
- * @property $wowauth
- * @property $template
- * @property $donate_model
+ * @property General_model $wowgeneral
+ * @property Module_model  $wowmodule
+ * @property Auth_model    $wowauth
+ * @property Template      $template
+ * @property Donate_model  $donate_model
  */
 class Donate extends MX_Controller
 {

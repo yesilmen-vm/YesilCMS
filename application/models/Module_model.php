@@ -279,4 +279,18 @@ class Module_model extends CI_Model
             return false;
         }
     }
+
+    /**
+     * @return bool
+     */
+    public function getTimelineStatus(): bool
+    {
+        $qq = $this->db->select('status')->where('id', '20')->get($this->modules_table)->row('status');
+
+        if ($qq == '1') {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

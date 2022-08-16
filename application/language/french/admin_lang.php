@@ -30,6 +30,7 @@ $lang['admin_nav_logs']            = 'Logs du Systeme';
 $lang['admin_nav_download']        = 'Téléchargement';
 $lang['admin_nav_Tickets']         = 'Tickets';
 $lang['admin_nav_manage_tickets']  = 'Gérer le Tickets';
+$lang['admin_nav_timeline']        = 'Timeline';
 
 /*Sections Lang*/
 $lang['section_general_settings']  = 'Réglages Généraux';
@@ -75,6 +76,10 @@ $lang['table_header_create_time'] = 'Créer du temps';
 $lang['table_header_guid']        = 'Guid';
 $lang['table_header_information'] = 'Information';
 $lang['table_header_value']       = 'Valeur';
+$lang['table_header_patch']       = 'Patch';
+$lang['table_header_date']        = 'Date';
+$lang['table_header_image']       = 'Image';
+$lang['table_header_order']       = 'Order';
 
 /*Input Placeholder Lang*/
 $lang['placeholder_manage_account']      = 'Gérer les Comptes';
@@ -107,6 +112,8 @@ $lang['placeholder_select_category']     = 'Sélectionner une Categorie';
 $lang['placeholder_create_download']     = 'Créer un Téléchargement';
 $lang['placeholder_edit_download']       = 'Editer un Téléchargement';
 $lang['placeholder_upload_image']        = 'Upload une Image';
+$lang['placeholder_create_timeline']     = 'Create Timeline Item';
+$lang['placeholder_edit_timeline']       = 'Edit Timeline Item';
 $lang['placeholder_icon_name']           = 'Nom d\'Icon';
 $lang['placeholder_category']            = 'Categorie';
 $lang['placeholder_name']                = 'Nom';
@@ -137,6 +144,8 @@ $lang['placeholder_command']             = 'Commandes';
 $lang['placeholder_emulator']            = 'Emulateur';
 $lang['placeholder_size']                = 'Taille';
 $lang['placeholder_select_type']         = 'Sélectionner un Type';
+$lang['placeholder_patch']               = 'Select Patch';
+$lang['placeholder_date']                = 'Select Date';
 
 /*Config Lang*/
 $lang['conf_website_name']        = 'Nom du Site';
@@ -189,6 +198,7 @@ $lang['option_enabled']        = 'Activé';
 $lang['option_disabled']       = 'Désactivé';
 $lang['option_ssl']            = 'SSL';
 $lang['option_tls']            = 'TLS';
+$lang['option_none']           = 'None';
 $lang['option_everyone']       = 'Tout le monde';
 $lang['option_staff']          = 'STAFF';
 $lang['option_all']            = 'STAFF - Tout le monde';

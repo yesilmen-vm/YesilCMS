@@ -93,8 +93,8 @@
                         </div>
                         <h5 class="uk-h5 uk-heading-bullet uk-text-uppercase uk-text-bold uk-margin-top uk-margin-small-bottom">SMTP</h5>
                         <div class="uk-alert-warning uk-margin-small" uk-alert>
-                            <p><i class="fas fa-triangle-exclamation"></i> If you are using Gmail, please make sure you must allow "less secure" apps. Please refer to
-                                <a href="https://www.google.com/settings/security/lesssecureapps">here</a> for more information.
+                            <p><i class="fas fa-triangle-exclamation"></i> If you are using Gmail, please make sure you use "App passwords". Please refer to
+                                <a href="https://support.google.com/accounts/answer/185833">here</a> for more information.
                             </p>
                         </div>
                         <div class="uk-margin-small">
@@ -126,6 +126,10 @@
                                             <option value="tls" <?php if ($this->config->item('smtp_crypto') == 'tls') {
                                                 echo 'selected';
                                             } ?>><?= $this->lang->line('option_tls'); ?></option>
+                                            <option value="" <?php if ($this->config->item('smtp_crypto') == '') {
+                                                echo 'selected';
+                                            } ?>><?= $this->lang->line('option_none'); ?>
+                                            </option>
                                         </select>
                                     </div>
                                 </div>

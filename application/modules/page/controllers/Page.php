@@ -3,9 +3,9 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
- * @property $wowgeneral
- * @property $page_model
- * @property $template
+ * @property General_model $wowgeneral
+ * @property Template      $template
+ * @property Page_model    $page_model
  */
 class Page extends MX_Controller
 {

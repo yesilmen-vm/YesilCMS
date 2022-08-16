@@ -3,11 +3,11 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
- * @property $wowgeneral
- * @property $wowrealm
- * @property $wowmodule
- * @property $template
- * @property $armory_model
+ * @property General_model $wowgeneral
+ * @property Realm_model   $wowrealm
+ * @property Module_model  $wowmodule
+ * @property Template      $template
+ * @property Armory_model  $armory_model
  */
 class Armory extends MX_Controller
 {

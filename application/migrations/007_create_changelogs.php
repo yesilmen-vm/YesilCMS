@@ -3,8 +3,8 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
- * @property mixed $dbforge
- * @property mixed $db
+ * @property CI_DB_forge         $dbforge
+ * @property CI_DB_query_builder $db
  */
 class Migration_create_changelogs extends CI_Migration
 {

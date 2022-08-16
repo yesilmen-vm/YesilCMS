@@ -33,7 +33,7 @@ In addition to the existing features of BlizzCMS, some of the added features are
 
 - Functioning vMaNGOS server (on same/another host)
 - OS (**Including Windows**)
-- PHP 7.2+
+- PHP 7.2+ (including 8.1.x - beta)
 - Composer
 - Web-server (Tested on Nginx, Apache and IIS)
 - Database (MySQL/MariaDB)

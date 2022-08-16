@@ -49,6 +49,20 @@ function secondsToTime($inputSeconds): string
 }
 
 /**
+ * @param $string
+ * @param  int  $chars
+ *
+ * @return mixed|string
+ */
+function truncateString($string, int $chars = 100)
+{
+    preg_match('/^.{0,' . $chars . '}(?:.*?)\b/iu', $string, $matches);
+    $new_string = $matches[0] ?? '';
+
+    return ($new_string === $string) ? $string : $new_string . '&hellip;';
+}
+
+/**
  * @param $class
  * @param $race
  * @param $gender

@@ -3,10 +3,10 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
- * @property $wowgeneral
- * @property $wowmodule
- * @property $wowrealm
- * @property $template
+ * @property General_model $wowgeneral
+ * @property Module_model  $wowmodule
+ * @property Realm_model   $wowrealm
+ * @property Template      $template
  */
 class Pvp extends MX_Controller
 {

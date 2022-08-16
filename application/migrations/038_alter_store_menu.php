@@ -3,7 +3,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
- * @property mixed $dbforge
+ * @property CI_DB_forge $dbforge
  */
 class Migration_alter_store_menu extends CI_Migration
 {

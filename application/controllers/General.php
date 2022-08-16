@@ -3,7 +3,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
- * @property $template
+ * @property Template $template
  */
 class General extends CI_Controller
 {

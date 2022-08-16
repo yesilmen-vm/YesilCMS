@@ -3,8 +3,8 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
- * @property $service
- * @property $wowgeneral
+ * @property Service_model $service
+ * @property General_model $wowgeneral
  */
 class Forum_model extends CI_Model
 {

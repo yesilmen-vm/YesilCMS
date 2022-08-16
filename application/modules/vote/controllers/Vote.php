@@ -3,11 +3,11 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
- * @property $wowgeneral
- * @property $template
- * @property $wowmodule
- * @property $wowauth
- * @property $vote_model
+ * @property General_model $wowgeneral
+ * @property Module_model  $wowmodule
+ * @property Auth_model    $wowauth
+ * @property Template      $template
+ * @property Vote_model    $vote_model
  */
 class Vote extends MX_Controller
 {

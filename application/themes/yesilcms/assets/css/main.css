@@ -755,6 +755,12 @@ h6,
   font-size: 0.875rem;
 }
 
+.uk-table-xsmall td,
+.uk-table-xsmall th {
+  padding: 5px 8px;
+  font-size: 0.875rem;
+}
+
 .uk-pagination > * {
   padding-left: 8px;
 }

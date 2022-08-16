@@ -3,9 +3,9 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
- * @property $wowgeneral
- * @property $wowrealm
- * @property $template
+ * @property General_model $wowgeneral
+ * @property Realm_model   $wowrealm
+ * @property Template      $template
  */
 class Online extends MX_Controller
 {

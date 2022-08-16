@@ -3,13 +3,13 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
- * @property $wowauth
- * @property $template
+ * @property Auth_model $wowauth
+ * @property Template   $template
  */
 class Mod extends MX_Controller
 {
-    private string $wowlocmod = '';
-    private string $wowlocref = '';
+    private $wowlocmod = '';
+    private $wowlocref = '';
 
     public function __construct()
     {

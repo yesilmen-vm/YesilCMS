@@ -3,7 +3,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
- * @property $wowauth
+ * @property Auth_model $wowauth
  */
 class General_model extends CI_Model
 {

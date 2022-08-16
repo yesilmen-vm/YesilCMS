@@ -3,12 +3,12 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
- * @property $wowgeneral
- * @property $home_model
- * @property $news_model
- * @property $admin_model
- * @property $wowrealm
- * @property $template
+ * @property General_model $wowgeneral
+ * @property Home_model    $home_model
+ * @property News_model    $news_model
+ * @property Admin_model   $admin_model
+ * @property Realm_model   $wowrealm
+ * @property Template      $template
  */
 class Home extends MX_Controller
 {

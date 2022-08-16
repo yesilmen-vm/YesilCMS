@@ -256,3 +256,9 @@ $lang['soap_send_body']    = 'Merci D\'avoir Acheté Dans Notre Boutique!';
 $lang['email_password_recovery_p1'] = 'Password Recovery Confirmation';
 $lang['email_password_recovery_p2'] = 'Password Recovery';
 $lang['email_account_activation']   = 'Activate Your %s Account';
+
+/*Timeline Lang*/
+$lang['timeline_subtitle'] = 'Content Release Timeline';
+$lang['timeline_general']  = 'General';
+$lang['timeline_pve']      = 'PvE';
+$lang['timeline_pvp']      = 'PvP';

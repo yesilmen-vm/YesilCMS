@@ -189,11 +189,11 @@ $route[$lang . '/online'] = 'online/index';
  *  Armory
  *  Information about player, items or guild.
 */
-$route[$lang . '/armory']                      = 'armory';
-$route[$lang . '/armory/search']               = 'armory/search';
-$route[$lang . '/armory/result']               = 'armory/result';
+$route[$lang . '/armory']                         = 'armory';
+$route[$lang . '/armory/search']                  = 'armory/search';
+$route[$lang . '/armory/result']                  = 'armory/result';
 $route[$lang . '/armory/character/(:num)/(:num)'] = 'armory/character/$2/$3';
-$route[$lang . '/armory/guild/(:num)/(:num)']  = 'armory/guild/$2/$3';
+$route[$lang . '/armory/guild/(:num)/(:num)']     = 'armory/guild/$2/$3';
 
 /*
  *  Api
@@ -393,3 +393,15 @@ $route[$lang . '/admin/vote/logs'] = 'admin/votelogs';
  *  To check the soap connection
 */
 $route[$lang . '/admin/checksoap'] = 'admin/checkSoap';
+
+/*
+ *  Timeline
+*/
+$route[$lang . '/admin/timeline']             = 'admin/manage_timeline';
+$route[$lang . '/admin/timeline/create']      = 'admin/create_timeline';
+$route[$lang . '/admin/timeline/edit/(:num)'] = 'admin/edit_timeline/$2';
+$route[$lang . '/admin/timeline/add']         = 'admin/add_timeline';
+$route[$lang . '/admin/timeline/update']      = 'admin/update_timeline';
+$route[$lang . '/admin/timeline/delete']      = 'admin/delete_timeline';
+
+$route[$lang . '/timeline'] = 'timeline/index';

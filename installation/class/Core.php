@@ -2,7 +2,6 @@
 
 class Core
 {
-
     private
         $appPath,
         $reCMS,

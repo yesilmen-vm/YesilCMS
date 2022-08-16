@@ -3,11 +3,11 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
- * @property $multiRealm
- * @property $armory_model
- * @property $wowgeneral
+ * @property               $multiRealm
+ * @property Armory_model  $armory_model
+ * @property General_model $wowgeneral
  */
-class armory_model extends CI_Model
+class Armory_model extends CI_Model
 {
     public function __construct()
     {

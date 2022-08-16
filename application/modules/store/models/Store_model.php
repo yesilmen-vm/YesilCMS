@@ -3,14 +3,14 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
- * @property $wowgeneral
- * @property $wowrealm
+ * @property General_model $wowgeneral
+ * @property Realm_model   $wowrealm
  */
 class Store_model extends CI_Model
 {
-    protected string $top;
-    protected string $item;
-    protected string $categories;
+    protected $top;
+    protected $item;
+    protected $categories;
 
     /**
      * Store_model constructor.

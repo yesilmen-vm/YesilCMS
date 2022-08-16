@@ -3,8 +3,8 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
- * @property mixed $dbforge
- * @property mixed $db
+ * @property CI_DB_forge         $dbforge
+ * @property CI_DB_query_builder $db
  */
 class Migration_create_modules extends CI_Migration
 {
@@ -49,7 +49,7 @@ class Migration_create_modules extends CI_Migration
             array('name' => 'Bugtracker', 'status' => '1'),
             array('name' => 'Changelogs', 'status' => '1'),
             array('name' => 'Download', 'status' => '1'),
-            array('name' => 'Armory', 'status' => '1'),
+            array('name' => 'Armory', 'status' => '1')
         );
         $this->db->insert_batch('modules', $data);
     }

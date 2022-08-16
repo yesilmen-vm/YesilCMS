@@ -3,11 +3,11 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
- * @property $wowgeneral
- * @property $wowmodule
- * @property $wowauth
- * @property $bugtracker_model
- * @property $template
+ * @property General_model    $wowgeneral
+ * @property Module_model     $wowmodule
+ * @property Auth_model       $wowauth
+ * @property Bugtracker_model $bugtracker_model
+ * @property Template         $template
  */
 class Bugtracker extends MX_Controller
 {

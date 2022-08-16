@@ -3,11 +3,11 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
- * @property bool|object $auth
- * @property             $wowmodule
- * @property             $multirealm
- * @property             $wowgeneral
- * @property             $config_writer
+ * @property CI_DB_query_builder $auth
+ * @property Module_model        $wowmodule
+ * @property                     $multirealm
+ * @property General_model       $wowgeneral
+ * @property Config_Writer       $config_writer
  */
 class Admin_model extends CI_Model
 {
@@ -1519,5 +1519,87 @@ class Admin_model extends CI_Model
         $this->multirealm = $multirealm;
 
         return $this->multirealm->select('*')->limit($this->_pageNumber, $this->_offset)->get('gm_tickets')->result();
+    }
+
+    /**
+     * Timeline
+     **/
+
+    public function getTimeline()
+    {
+        return $this->db->order_by('order ASC, id ASC')->select('*')->get('timeline')->result_array();
+    }
+
+    public function getTimelineRow($id): int
+    {
+        return $this->db->select('id')->where('id', $id)->get('timeline')->num_rows();
+    }
+
+    public function getTimelineEventByID(int $id)
+    {
+        return $this->db->select('*')->where('id', $id)->get('timeline')->row_array();
+    }
+
+    public function getTimelineEventImageByID($id)
+    {
+        return $this->db->select('image')->where('id', $id)->get('timeline')->row('image');
+    }
+
+    public function addTimeline($description, $patch, $date, $order, $image): bool
+    {
+        $data = array(
+            'description' => $description,
+            'patch'       => $patch,
+            'date'        => $date,
+            'order'       => $order,
+            'image'       => $image
+        );
+
+        if ($this->db->insert('timeline', $data)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function deleteTimelineByID($id): bool
+    {
+        $unlink = $this->getTimelineEventImageByID($id);
+        if (unlink('./assets/images/timeline/' . $unlink)) {
+            if ($this->db->where('id', $id)->delete('timeline')) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function updateTimelineEventByID($id, $description, $patch, $date, $order, $image = null): bool
+    {
+        if ($image) {
+            $unlink = $this->getTimelineEventImageByID($id);
+            unlink('./assets/images/timeline/' . $unlink);
+
+            $update = array(
+                'description' => $description,
+                'patch'       => $patch,
+                'date'        => $date,
+                'order'       => $order,
+                'image'       => $image
+            );
+        } else {
+            $update = array(
+                'description' => $description,
+                'patch'       => $patch,
+                'date'        => $date,
+                'order'       => $order,
+            );
+        }
+
+        if ($this->db->where('id', $id)->update('timeline', $update)) {
+            return true;
+        }
+
+        return false;
     }
 }

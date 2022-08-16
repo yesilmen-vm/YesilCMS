@@ -3,9 +3,9 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
- * @property             $wowauth
- * @property             $wowgeneral
- * @property bool|object $auth
+ * @property Auth_model          $wowauth
+ * @property General_model       $wowgeneral
+ * @property CI_DB_query_builder $auth
  */
 class User_model extends CI_Model
 {

@@ -3,8 +3,8 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
- * @property bool|object $auth
- * @property             $multiRealm
+ * @property CI_DB_query_builder $auth
+ * @property                     $multiRealm
  */
 class Realm_model extends CI_Model
 {

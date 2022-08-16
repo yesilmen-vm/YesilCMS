@@ -30,6 +30,7 @@ $lang['admin_nav_logs']            = 'Logs System';
 $lang['admin_nav_download']        = 'Download';
 $lang['admin_nav_Tickets']         = 'Tickets';
 $lang['admin_nav_manage_tickets']  = 'Manage Tickets';
+$lang['admin_nav_timeline']        = 'Timeline';
 
 /*Sections Lang*/
 $lang['section_general_settings']  = 'General Settings';
@@ -75,6 +76,10 @@ $lang['table_header_create_time'] = 'Create Time';
 $lang['table_header_guid']        = 'Guid';
 $lang['table_header_information'] = 'Information';
 $lang['table_header_value']       = 'Value';
+$lang['table_header_patch']       = 'Patch';
+$lang['table_header_date']        = 'Date';
+$lang['table_header_image']       = 'Image';
+$lang['table_header_order']       = 'Order';
 
 /*Input Placeholder Lang*/
 $lang['placeholder_manage_account']      = 'Manage Account';
@@ -107,6 +112,8 @@ $lang['placeholder_select_category']     = 'Select a Category';
 $lang['placeholder_create_download']     = 'Create Download';
 $lang['placeholder_edit_download']       = 'Edit Download';
 $lang['placeholder_upload_image']        = 'Upload Image';
+$lang['placeholder_create_timeline']     = 'Create Timeline Item';
+$lang['placeholder_edit_timeline']       = 'Edit Timeline Item';
 $lang['placeholder_icon_name']           = 'Icon Name';
 $lang['placeholder_category']            = 'Category';
 $lang['placeholder_name']                = 'Name';
@@ -137,6 +144,8 @@ $lang['placeholder_command']             = 'Command';
 $lang['placeholder_emulator']            = 'Emulator';
 $lang['placeholder_size']                = 'Size';
 $lang['placeholder_select_type']         = 'Select a Type';
+$lang['placeholder_patch']               = 'Select Patch';
+$lang['placeholder_date']                = 'Select Date';
 
 /*Config Lang*/
 $lang['conf_website_name']        = 'Website Name';
@@ -189,6 +198,7 @@ $lang['option_enabled']        = 'Enabled';
 $lang['option_disabled']       = 'Disabled';
 $lang['option_ssl']            = 'SSL';
 $lang['option_tls']            = 'TLS';
+$lang['option_none']           = 'None';
 $lang['option_everyone']       = 'Everyone';
 $lang['option_staff']          = 'STAFF';
 $lang['option_all']            = 'STAFF - Everyone';

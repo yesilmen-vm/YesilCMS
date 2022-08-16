@@ -20,7 +20,8 @@
     "ext-ctype": "*",
     "ext-curl": "*",
     "ext-mysqli": "*",
-    "ext-redis": "*"
+    "ext-redis": "*",
+    "ext-exif": "*"
   },
   "suggest": {
     "paragonie/random_compat": "Provides better randomness in PHP 5.x"

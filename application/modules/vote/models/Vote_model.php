@@ -3,7 +3,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
- * @property $wowgeneral
+ * @property General_model $wowgeneral
  */
 class Vote_model extends CI_Model
 {

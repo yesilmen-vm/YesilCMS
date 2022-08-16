@@ -28,6 +28,7 @@ composer.lock
 
 #IDE
 .idea/*
+phpstorm.php
 
 # PHPUnit
 /app/phpunit.xml

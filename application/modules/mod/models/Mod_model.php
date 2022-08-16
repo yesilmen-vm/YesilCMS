@@ -3,7 +3,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
- * @property $wowmodule
+ * @property Module_model $wowmodule
  */
 class Mod_model extends CI_Model
 {

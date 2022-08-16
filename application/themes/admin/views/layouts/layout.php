@@ -72,6 +72,7 @@
                                 <li><a href="<?= base_url('admin/changelogs'); ?>"><span class="admin-subnav-icon"><i class="fas fa-scroll"></i></span><?= $this->lang->line('admin_nav_changelogs'); ?></a></li>
                                 <li><a href="<?= base_url('admin/pages'); ?>"><span class="admin-subnav-icon"><i class="fas fa-file-alt"></i></span><?= $this->lang->line('admin_nav_pages'); ?></a></li>
                                 <li><a href="<?= base_url('admin/download'); ?>"><span class="admin-subnav-icon"><i class="fas fa-download"></i></span><?= $this->lang->line('admin_nav_download'); ?></a></li>
+                                <li><a href="<?= base_url('admin/timeline'); ?>"><span class="admin-subnav-icon"><i class="fas fa-timeline"></i></span><?= $this->lang->line('admin_nav_timeline'); ?></a></li>
                             </ul>
                         </li>
                         <li class="uk-parent">
@@ -128,6 +129,7 @@
                                     <li><a href="<?= base_url('admin/changelogs'); ?>"><span class="admin-subnav-icon"><i class="fas fa-scroll"></i></span><?= $this->lang->line('admin_nav_changelogs'); ?></a></li>
                                     <li><a href="<?= base_url('admin/pages'); ?>"><span class="admin-subnav-icon"><i class="fas fa-file-alt"></i></span><?= $this->lang->line('admin_nav_pages'); ?></a></li>
                                     <li><a href="<?= base_url('admin/download'); ?>"><span class="admin-subnav-icon"><i class="fas fa-download"></i></span><?= $this->lang->line('admin_nav_download'); ?></a></li>
+                                    <li><a href="<?= base_url('admin/timeline'); ?>"><span class="admin-subnav-icon"><i class="fas fa-timeline"></i></span><?= $this->lang->line('admin_nav_timeline'); ?></a></li>
                                 </ul>
                             </div>
                         </li>
