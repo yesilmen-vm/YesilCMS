@@ -75,7 +75,7 @@
   left: calc(-100% - 56px);
   padding-left: 0;
   border-left: none;
-  border-left: 2px solid rgb(207 159 23 / 60%);
+  border-right: 2px solid rgb(207 159 23 / 60%);
   padding-right: 15px;
 }
 .timeline-item-active {
