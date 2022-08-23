@@ -1,5 +1,5 @@
-(function($) {
-    $.fn.timeline = function() {
+(function ($) {
+    $.fn.timeline = function () {
         var selectors = {
             id: $(this),
             item: $(this).find(".timeline-item"),
@@ -11,16 +11,16 @@
             "background-image",
             "url(" +
             selectors.item
-            .first()
-            .find(selectors.img)
-            .attr("src") +
+                .first()
+                .find(selectors.img)
+                .attr("src") +
             ")"
         );
         var itemLength = selectors.item.length;
-        $(window).scroll(function() {
+        $(window).scroll(function () {
             var max, min;
             var pos = $(this).scrollTop();
-            selectors.item.each(function(i) {
+            selectors.item.each(function (i) {
                 min = $(this).offset().top;
                 max = $(this).height() + $(this).offset().top;
                 var that = $(this);
@@ -30,9 +30,9 @@
                         "background-image",
                         "url(" +
                         selectors.item
-                        .last()
-                        .find(selectors.img)
-                        .attr("src") +
+                            .last()
+                            .find(selectors.img)
+                            .attr("src") +
                         ")"
                     );
                     selectors.item.last().addClass(selectors.activeClass);
@@ -41,8 +41,8 @@
                         "background-image",
                         "url(" +
                         $(this)
-                        .find(selectors.img)
-                        .attr("src") +
+                            .find(selectors.img)
+                            .attr("src") +
                         ")"
                     );
                     selectors.item.removeClass(selectors.activeClass);
@@ -55,6 +55,9 @@
 
 $("#yesilcms-timeline").timeline();
 
-$(function() {
-    $('.timeline-img').lazy();
+$(function () {
+    $('.timeline-img').lazy({
+        combined: true,
+        delay: 5000
+    });
 });

@@ -1,22 +1,25 @@
 @import url("https://fonts.googleapis.com/css?family=Pathway+Gothic+One");
+
 .timeline {
   display: flex;
   margin: 0 auto;
   flex-wrap: wrap;
   flex-direction: column;
-  max-width: 700px;
+  max-width: 750px;
   position: relative;
 }
+
 .timeline-content-title {
   font-weight: normal;
   font-size: 55px;
   margin: -10px 0 0 0;
-  transition: 0.4s;
+  transition: 0.75s;
   padding: 0 10px;
   box-sizing: border-box;
   font-family: "Pathway Gothic One", sans-serif;
   color: #fff;
 }
+
 .timeline-content-desc {
   margin: 0;
   font-size: 15px;
@@ -25,6 +28,7 @@
   font-weight: normal;
   line-height: 25px;
 }
+
 .timeline:before {
   position: absolute;
   left: 50%;
@@ -34,22 +38,35 @@
   content: "";
   background: rgba(255, 255, 255, 0.07);
 }
+
 @media only screen and (max-width: 767px) {
   .timeline:before {
     left: 40px;
   }
 }
+
 .timeline-item {
   padding: 40px 0;
   opacity: 0.3;
   filter: blur(2px);
-  transition: 0.5s;
+  transition: 1.5s;
   box-sizing: border-box;
   width: calc(50% - 40px);
   display: flex;
   position: relative;
   transform: translateY(-80px);
 }
+
+@media only screen and (min-width: 767px) {
+  .timeline-item:first-child {
+    padding-bottom: 150px;
+  }
+
+  .timeline-item:not(:first-child) {
+    padding: 150px 0;
+  }
+}
+
 .timeline-item:before {
   content: attr(data-text);
   letter-spacing: 3px;
@@ -69,6 +86,7 @@
 .timeline-item:nth-child(even) {
   align-self: flex-end;
 }
+
 .timeline-item:nth-child(even):before {
   right: auto;
   text-align: right;
@@ -78,25 +96,30 @@
   border-right: 2px solid rgb(207 159 23 / 60%);
   padding-right: 15px;
 }
+
 .timeline-item-active {
   opacity: 1;
   transform: translateY(0);
   filter: blur(0px);
 }
+
 .timeline-item-active:before {
   top: 50%;
-  transition: 0.3s all 0.2s;
+  transition: 0.5s all 0.2s;
   opacity: 1;
 }
+
 .timeline-item-active .timeline-content-title {
   margin: -50px 0 20px 0;
 }
+
 @media only screen and (max-width: 767px) {
   .timeline-item {
     align-self: baseline !important;
     width: 100%;
     padding: 0 30px 150px 80px;
   }
+
   .timeline-item:before {
     left: 10px !important;
     padding: 0 !important;
@@ -106,25 +129,29 @@
     width: 60px;
     border: none !important;
   }
+
   .timeline-item:last-child {
     padding-bottom: 40px;
   }
 }
+
 .timeline-img {
   max-width: 100%;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
 }
+
 .timeline-container {
   width: 100%;
   position: relative;
-  padding: 80px 0;
-  transition: 0.3s ease 0s;
+  padding: 100px 0;
+  transition: 1s ease 0s;
   background-attachment: fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
+
 .timeline-container:before {
   position: absolute;
   left: 0;
@@ -134,18 +161,21 @@
   background: rgba(21, 13, 10, 0.7);
   content: "";
 }
+
 .timeline-header {
   width: 100%;
   text-align: center;
   margin-bottom: 80px;
   position: relative;
 }
+
 .timeline-header-title {
   color: #fff;
   font-size: 46px;
   font-weight: normal;
   margin: 0;
 }
+
 .timeline-header-subtitle {
   color: rgba(255, 255, 255, 0.5);
   font-family: "Pathway Gothic One", sans-serif;

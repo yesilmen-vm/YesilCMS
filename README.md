@@ -17,6 +17,7 @@ In addition to the existing features of BlizzCMS, some of the added features are
   - Base character info
   - 3D Model Viewer (Fast: Uses plain `displayID`, Detailed: Converts old `displayID` to Classic `displayID` using Classic's DBC. You can also create a separate table instead of remote call.)
   - Dynamic Base Stats
+  - Progressive Armory (1.2 to 1.12 can be selected by user as well)
   - Primary & Secondary Professions
   - PvP Stats
   - Ability to show enchants on items (by using WoWHead's tooltip instead of ClassicDB)

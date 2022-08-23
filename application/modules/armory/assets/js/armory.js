@@ -1,6 +1,6 @@
 if (!window.WH) {
     window.WH = {};
-    window.WH.debug = function(...args) {
+    window.WH.debug = function (...args) {
         //console.log(args);
     };
     window.WH.defaultAnimation = `Stand`;
@@ -54,6 +54,26 @@ const CHARACTER_PART = {
     Necklace: undefined,
     Earring: undefined
 };
+
+
+$('.tooltipLink').hover(function () {
+    var title = $(this).attr('data-tooltip');
+    $(this).data('tipText', title);
+    if (title == '') {
+    } else {
+        $('<p class="patch-tooltip"></p>').fadeIn(200).text(title).appendTo('body');
+    }
+}, function () {
+    $(this).attr('data-tooltip', $(this).data('tipText'));
+    $('.patch-tooltip').fadeOut(200);
+}).mousemove(function (e) {
+    var mousex = e.pageX;
+    var mousey = e.pageY;
+    $('.patch-tooltip').css({
+        top: mousey,
+        left: mousex
+    })
+});
 
 /**
  * Returns a 2 dimensional list the inner list contains on first position the item slot, the second the item
@@ -275,55 +295,85 @@ function getOptions(character, fullOptions) {
     return ret;
 }
 
-
 let buttonF = document.querySelector('#show3DModelFast');
 let buttonD = document.querySelector('#show3DModelDetailed');
 let placeholder = document.querySelector('#placeholder');
 
-async function show3DModel(type, timeout) {
+function removeButtons() {
+    return new Promise(function (resolve) {
+        buttonD.remove();
+        buttonF.remove();
+        $('#patch').hide();
+        placeholder.classList.add("animate-flicker");
+        resolve();
+    });
+}
+
+function removePlaceholder() {
+    return new Promise(function (resolve) {
+        placeholder.remove();
+        resolve();
+    });
+}
+
+function showAnimationControl() {
+    return new Promise(function (resolve) {
+        setTimeout(function () {
+            $.each(model.getListAnimations(), function (key, value) {
+                $('#animationSelect')
+                    .append($('<option>', {
+                        value: value
+                    })
+                        .text(value));
+            });
+
+            setTimeout(() => {
+                $("#patch").show();
+            });
+            $("div.animation-dropdown").show();
+
+            $(document).on('click', '#playAnim', function (e) {
+                $(this).hide();
+                $("#pauseAnim").show();
+                model.setAnimPaused(false);
+            });
+
+            $(document).on('click', '#pauseAnim', function (e) {
+                $(this).hide();
+                $("#playAnim").show();
+                model.setAnimPaused(true);
+            });
+            resolve();
+        }, 5000);
+    });
+}
+
+async function show3DModel(type) {
     if (type == 1) {
+        await removeButtons();
         window.model = await generateModels(1, `#model3D`, character);
+        await removePlaceholder();
+        await showAnimationControl();
     } else {
         findItemsInEquipments(equipments)
             .then(async e => {
                 character.items = e;
                 window.model = await generateModels(1, `#model3D`, character);
+                await removePlaceholder();
+                await showAnimationControl();
             });
+        buttonD.remove();
+        buttonF.remove();
+        $('#patch').hide();
+        placeholder.classList.add("animate-flicker");
     }
-
-    buttonD.remove();
-    buttonF.remove();
-    placeholder.remove();
-    await new Promise(r => setTimeout(r, timeout));
-
-    $.each(model.getListAnimations(), function(key, value) {
-        $('#mySelect')
-            .append($('<option>', {
-                value: value
-            })
-                .text(value));
-    });
-
-    $("div.animation-dropdown").show();
 }
 
-$("#show3DModelFast").bind('click', function() {
-    show3DModel(1, 5000);
+$("#show3DModelFast").bind('click', function () {
+    show3DModel(1);
 });
-$("#show3DModelDetailed").bind('click', function() {
-    show3DModel(2, 10000);
-});
-
-$(document).on('click', '#playAnim', function(e) {
-    $(this).hide();
-    $("#pauseAnim").show();
-    model.setAnimPaused(false);
-});
-
-$(document).on('click', '#pauseAnim', function(e) {
-    $(this).hide();
-    $("#playAnim").show();
-    model.setAnimPaused(true);
+$("#show3DModelDetailed").bind('click', function () {
+    show3DModel(2);
 });
 
 export {

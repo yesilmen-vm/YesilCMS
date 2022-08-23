@@ -49,7 +49,7 @@ function secondsToTime($inputSeconds): string
 }
 
 /**
- * @param $string
+ * @param       $string
  * @param  int  $chars
  *
  * @return mixed|string
@@ -453,4 +453,38 @@ function generateToken($length): string
     }
 
     return $token;
+}
+
+/**
+ * @param $patch
+ *
+ * @return string
+ */
+function getPatchName($patch): string
+{
+    $patches = ['1.2', '1.3', '1.4', '1.5', '1.6', '1.7', '1.8', '1.9', '1.10', '1.11', '1.12'];
+
+    if (! empty($patch) || strlen($patch) > 0) {
+        return $patches[$patch];
+    }
+
+    return '1.12';
+}
+
+/**
+ * @param $id
+ * @param $item_patch
+ * @param $selected_patch
+ *
+ * @return string
+ */
+function showTooltip($id, $item_patch, $selected_patch): string
+{
+    if (empty($selected_patch) || $selected_patch === 10) {
+        return 'href="https://classicdb.ch/?item=' . $id . '"';
+    } elseif ($item_patch === 99) {
+        return 'class="tooltipLink" data-tooltip="This item doesn\'t exists in selected patch: ' . getPatchName($selected_patch) . '"';
+    } else {
+        return 'href="https://classicdb.ch/?item=' . $id . '-' . $item_patch . '"';
+    }
 }

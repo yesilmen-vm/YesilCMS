@@ -193,6 +193,7 @@ $route[$lang . '/armory']                         = 'armory';
 $route[$lang . '/armory/search']                  = 'armory/search';
 $route[$lang . '/armory/result']                  = 'armory/result';
 $route[$lang . '/armory/character/(:num)/(:num)'] = 'armory/character/$2/$3';
+$route[$lang . '/armory/character/(:num)/(:num)/(:num)?'] = 'armory/character/$2/$3/$4';
 $route[$lang . '/armory/guild/(:num)/(:num)']     = 'armory/guild/$2/$3';
 
 /*
