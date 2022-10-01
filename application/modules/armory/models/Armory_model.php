@@ -345,7 +345,7 @@ class Armory_model extends CI_Model
             ];
 
             $equippedItemIDsByPatch = $world->select('entry')->where('patch=(' . $subQ . ')')->where_in('entry', $equippedItemIDs)->get('item_template t1')->result_array('entry');
-            $equippedItemIDsByPatch = array_map('intval', array_map('end', $equippedItemIDsByPatch));
+            $equippedItemIDsByPatch = array_map('intval', array_column($equippedItemIDsByPatch, 'entry'));
 
             $enchAuras = $this->getEnchantInfo($MultiRealm, $id, $equippedItemIDsByPatch);
 

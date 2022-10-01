@@ -39,7 +39,7 @@
                                     foreach ($result as $tops):
                                         $faction = $this->wowgeneral->getFaction($tops->race);
                                         $title = $this->armory_model->getCurrentPVPRank($multiRealm, $tops->guid);
-                                        $title = $faction == 'Alliance' ? $title->a_title : $title->h_title;
+                                        $title = $faction == 'Alliance' ? $title['a_title'] : $title['h_title'];
                                         ?>
                                         <tr>
                                             <td class="uk-text-capitalize uk-text-middle"><a class="pvp-name-<?= $faction ?>" href="<?= base_url() . 'armory/character/' . $charsMultiRealm->id . '/' ?><?= $tops->guid ?>"><?= $tops->name ?></a></td>
