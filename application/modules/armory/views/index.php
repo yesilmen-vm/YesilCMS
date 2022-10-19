@@ -150,7 +150,7 @@
                         </div>
                     </div>
                 </div>
-                <h3>Base Stats</h3>
+                <h3>基本屬性</h3>
                 <hr>
                 <div class="uk-grid-match uk-child-width-1-2@s uk-child-width-1-4@m uk-margin-remove-left" uk-grid>
                     <div>
@@ -160,7 +160,7 @@
                             </div>
                             <div class="ability-med-text cs-primary_health">
                                 <span><?= formatStats($character['stats']['maxHealth'] ?? $character['health']) ?></span>
-                                <div class="cs-name">Health</div>
+                                <div class="cs-name">生命</div>
                             </div>
                         </div>
                     </div>
@@ -217,7 +217,7 @@
                         </div>
                     <?php endforeach; ?>
                 </div>
-                <h3>Primary Professions</h3>
+                <h3>主要專業</h3>
                 <hr>
                 <div class="uk-grid-match uk-child-width-1-2@s uk-child-width-1-2@m uk-margin-remove-left" uk-grid>
                     <?php foreach ($character['profession_primary'] as $primary) : ?>
@@ -249,7 +249,7 @@
                         <?php endfor;
                     endif; ?>
                 </div>
-                <h3>Secondary Professions</h3>
+                <h3>次要專業</h3>
                 <hr>
                 <div class="uk-grid-match uk-child-width-1-2@s uk-child-width-1-2@m uk-margin-remove-left" uk-grid>
                     <?php foreach ($character['profession_secondary'] as $secondary) : ?>
@@ -274,7 +274,7 @@
                         </div>
                     <?php endif; ?>
                 </div>
-                <h3>PvP Stats</h3>
+                <h3>PvP 統計</h3>
                 <hr>
                 <div class="uk-grid-match uk-child-width-1-2@s uk-child-width-1-4@m uk-margin-remove-left" uk-grid>
                     <div>
@@ -284,7 +284,7 @@
                             </div>
                             <div class="ability-med-text">
                                 <span><?= formatStats($character['honor_total_hk']) ?></span>
-                                <div class="cs-name cs-HEALTH">HONORABLE KILLS</div>
+                                <div class="cs-name cs-HEALTH">榮譽擊殺</div>
                             </div>
                         </div>
                     </div>
@@ -295,7 +295,7 @@
                             </div>
                             <div class="ability-med-text">
                                 <span><?= $character['faction'] == 'Alliance' ? $character['honor_current_rank']['a_title'] : $character['honor_current_rank']['h_title'] ?> <small>#R<?= $character['honor_current_rank']['rank'] ?></small></span>
-                                <div class="cs-name cs-HEALTH">TITLE / <small>#RANK</small></div>
+                                <div class="cs-name cs-HEALTH">軍銜 / <small>#軍階</small></div>
                             </div>
                         </div>
                     </div>
@@ -306,7 +306,7 @@
                             </div>
                             <div class="ability-med-text">
                                 <span><?= formatStats($character['honor_last_week_cp']) ?></span>
-                                <div class="cs-name cs-HEALTH">HONOR <small>(Last Week)</small></div>
+                                <div class="cs-name cs-HEALTH">榮譽 <small>(上週)</small></div>
                             </div>
                         </div>
                     </div>
@@ -317,7 +317,7 @@
                             </div>
                             <div class="ability-med-text">
                                 <span><?= $character['honor_standing'] == 0 ? 'N/A' : $character['honor_standing'] ?></span>
-                                <div class="cs-name cs-HEALTH">STANDING <small>(Last Week)</small></div>
+                                <div class="cs-name cs-HEALTH">排名 <small>(上週)</small></div>
                             </div>
                         </div>
                     </div>
