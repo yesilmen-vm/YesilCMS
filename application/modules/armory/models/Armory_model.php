@@ -579,33 +579,33 @@ class Armory_model extends CI_Model
             $honorRankPoint = $honorDetails->row('honor_rank_points') ?? 0;
 
             if ($honorDetails->row('honor_stored_hk') > 15 && $honorRankPoint < 2000) {
-                $rank = ['rank' => 1, 'icon' => 'PvP_R1', 'a_title' => 'Private', 'h_title' => 'Scout'];
+                $rank = ['rank' => 1, 'icon' => 'PvP_R1', 'a_title' => '士兵', 'h_title' => '偵查兵'];
             } elseif ($honorRankPoint >= 2000 && $honorRankPoint < 5000) {
-                $rank = ['rank' => 2, 'icon' => 'PvP_R2', 'a_title' => 'Corporal', 'h_title' => 'Grunt'];
+                $rank = ['rank' => 2, 'icon' => 'PvP_R2', 'a_title' => '下士', 'h_title' => '步兵'];
             } elseif ($honorRankPoint >= 5000 && $honorRankPoint < 10000) {
-                $rank = ['rank' => 3, 'icon' => 'PvP_R3', 'a_title' => 'Sergeant', 'h_title' => 'Sergeant'];
+                $rank = ['rank' => 3, 'icon' => 'PvP_R3', 'a_title' => '士官', 'h_title' => '士官'];
             } elseif ($honorRankPoint >= 10000 && $honorRankPoint < 15000) {
-                $rank = ['rank' => 4, 'icon' => 'PvP_R4', 'a_title' => 'Master Sergeant', 'h_title' => 'Senior Sergeant'];
+                $rank = ['rank' => 4, 'icon' => 'PvP_R4', 'a_title' => '上士 ', 'h_title' => '資深士官'];
             } elseif ($honorRankPoint >= 15000 && $honorRankPoint < 20000) {
-                $rank = ['rank' => 5, 'icon' => 'PvP_R5', 'a_title' => 'Sergeant Major', 'h_title' => 'First Sergeant'];
+                $rank = ['rank' => 5, 'icon' => 'PvP_R5', 'a_title' => '士官長', 'h_title' => '一等士官'];
             } elseif ($honorRankPoint >= 20000 && $honorRankPoint < 25000) {
-                $rank = ['rank' => 6, 'icon' => 'PvP_R6', 'a_title' => 'Knight', 'h_title' => 'Stone Guard'];
+                $rank = ['rank' => 6, 'icon' => 'PvP_R6', 'a_title' => '騎士', 'h_title' => '石衛士'];
             } elseif ($honorRankPoint >= 25000 && $honorRankPoint < 30000) {
-                $rank = ['rank' => 7, 'icon' => 'PvP_R7', 'a_title' => 'Knight-Lieutenant', 'h_title' => 'Blood Guard'];
+                $rank = ['rank' => 7, 'icon' => 'PvP_R7', 'a_title' => '中尉騎士', 'h_title' => '血衛士'];
             } elseif ($honorRankPoint >= 30000 && $honorRankPoint < 35000) {
-                $rank = ['rank' => 8, 'icon' => 'PvP_R8', 'a_title' => 'Knight-Captain', 'h_title' => 'Legionnaire'];
+                $rank = ['rank' => 8, 'icon' => 'PvP_R8', 'a_title' => '上尉騎士', 'h_title' => '軍團士兵'];
             } elseif ($honorRankPoint >= 35000 && $honorRankPoint < 40000) {
-                $rank = ['rank' => 9, 'icon' => 'PvP_R9', 'a_title' => 'Knight-Champion', 'h_title' => 'Centurion'];
+                $rank = ['rank' => 9, 'icon' => 'PvP_R9', 'a_title' => '一等騎士', 'h_title' => '百夫長'];
             } elseif ($honorRankPoint >= 40000 && $honorRankPoint < 45000) {
-                $rank = ['rank' => 10, 'icon' => 'PvP_R10', 'a_title' => 'Lieutenant Commander', 'h_title' => 'Champion'];
+                $rank = ['rank' => 10, 'icon' => 'PvP_R10', 'a_title' => '少校', 'h_title' => '勇士'];
             } elseif ($honorRankPoint >= 45000 && $honorRankPoint < 50000) {
-                $rank = ['rank' => 11, 'icon' => 'PvP_R11', 'a_title' => 'Commander', 'h_title' => 'Lieutenant General'];
+                $rank = ['rank' => 11, 'icon' => 'PvP_R11', 'a_title' => '指揮官', 'h_title' => '中將'];
             } elseif ($honorRankPoint >= 50000 && $honorRankPoint < 55000) {
-                $rank = ['rank' => 12, 'icon' => 'PvP_R12', 'a_title' => 'Marshal', 'h_title' => 'General'];
+                $rank = ['rank' => 12, 'icon' => 'PvP_R12', 'a_title' => '元帥', 'h_title' => '將軍'];
             } elseif ($honorRankPoint >= 55000 && $honorRankPoint < 60000) {
-                $rank = ['rank' => 13, 'icon' => 'PvP_R13', 'a_title' => 'Field Marshal', 'h_title' => 'Warlord'];
+                $rank = ['rank' => 13, 'icon' => 'PvP_R13', 'a_title' => '戰場元帥', 'h_title' => '督軍'];
             } elseif ($honorRankPoint >= 60000) {
-                $rank = ['rank' => 14, 'icon' => 'PvP_R14', 'a_title' => 'Grand Marshal', 'h_title' => 'High Warlord'];
+                $rank = ['rank' => 14, 'icon' => 'PvP_R14', 'a_title' => '總元帥', 'h_title' => '高階督軍'];
             } else {
                 $rank = ['rank' => 0, 'icon' => 'PvP_R0', 'a_title' => 'N/A', 'h_title' => 'N/A'];
             }
