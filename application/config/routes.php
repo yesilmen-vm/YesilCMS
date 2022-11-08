@@ -177,7 +177,8 @@ $route[$lang . '/page/(:any)'] = 'page/index/$2/';
  *  PVP statistics of the server and its realms.
  *  It also includes arena statistics.
 */
-$route[$lang . '/pvp'] = 'pvp/index';
+$route[$lang . '/pvp']               = 'pvp/index';
+$route[$lang . '/pvp/stats']['POST'] = 'pvp/pvpstats';
 
 /*
  *  Online
@@ -187,21 +188,40 @@ $route[$lang . '/online'] = 'online/index';
 
 /*
  *  Armory
- *  Information about player, items or guild.
+ *  Information about player or guild.
 */
-$route[$lang . '/armory']                         = 'armory';
-$route[$lang . '/armory/search']                  = 'armory/search';
-$route[$lang . '/armory/result']                  = 'armory/result';
-$route[$lang . '/armory/character/(:num)/(:num)'] = 'armory/character/$2/$3';
+$route[$lang . '/armory']                                 = 'armory';
+$route[$lang . '/armory/search']                          = 'armory/search';
+$route[$lang . '/armory/result']                          = 'armory/result';
+$route[$lang . '/armory/character/(:num)/(:num)']         = 'armory/character/$2/$3';
 $route[$lang . '/armory/character/(:num)/(:num)/(:num)?'] = 'armory/character/$2/$3/$4';
-$route[$lang . '/armory/guild/(:num)/(:num)']     = 'armory/guild/$2/$3';
+$route[$lang . '/armory/guild/(:num)/(:num)']             = 'armory/guild/$2/$3';
+
+/*
+ *  Armory
+ *  Information about items and spells. (others are still in WIP)
+*/
+$route[$lang . '/database']             = 'database';
+$route[$lang . '/database/result']      = 'database/result';
+$route[$lang . '/item/(:num)']          = 'database/item/$2';
+$route[$lang . '/item/(:num)/(:num)?']  = 'database/item/$2/$3';
+$route[$lang . '/spell/(:num)']         = 'database/spell/$2';
+$route[$lang . '/spell/(:num)/(:num)?'] = 'database/spell/$2/$3';
 
 /*
  *  Api
  *  Initial API structure to develop CMS further
 */
-$route[$lang . '/api/v1']                          = 'api_v1';
-$route[$lang . '/api/v1/item/newdisplayid/(:num)'] = 'api_v1/classic_displayid/$2';
+$route[$lang . '/api/v1']                              = 'api_v1';
+$route[$lang . '/api/v1/item/newdisplayid/(:num)']     = 'api_v1/classic_displayid/$2';
+$route[$lang . '/api/v1/tooltip/item/(:num)']          = 'api_v1/tooltip_item/$2';
+$route[$lang . '/api/v1/tooltip/item/(:num)/(:num)?']  = 'api_v1/tooltip_item/$2/$3';
+$route[$lang . '/api/v1/tooltip/spell/(:num)']         = 'api_v1/tooltip_spell/$2';
+$route[$lang . '/api/v1/tooltip/spell/(:num)/(:num)?'] = 'api_v1/tooltip_spell/$2/$3';
+$route[$lang . '/api/v1/item/(:num)']                  = 'api_v1/item/$2';
+$route[$lang . '/api/v1/item/(:num)/(:num)?']          = 'api_v1/item/$2/$3';
+
+$route[$lang . '/api/v1/search/db']['POST'] = 'api_v1/search_db';
 
 
 /*

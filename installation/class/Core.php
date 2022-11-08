@@ -47,14 +47,14 @@ class Core
 
     public function reWrite(): bool
     {
-        $reWriteFile = ['blizzcms', 'config', 'database'];
+        $reWriteFile = ['yesilcms', 'config', 'database'];
 
         foreach ($reWriteFile as $fileName):
             $filePath = "$this->appPath/config/$fileName.php";
 
             if (is_writeable($filePath)):
                 switch ($fileName):
-                    case 'blizzcms':
+                    case 'yesilcms':
                         $find    = $this->reCMS;
                         $replace = [$this->input->theme];
                         break;
@@ -94,7 +94,7 @@ class Core
             endif;
         endforeach;
 
-        return $this->error ? false : true;
+        return ! $this->error;
     }
 
     public function getError(): array
@@ -104,7 +104,7 @@ class Core
 
     public function PHPVersion()
     {
-        if ((version_compare(PHP_VERSION, '7.1') >= 0) && (version_compare(PHP_VERSION, '8.1.9') <= 0)) {
+        if ((version_compare(PHP_VERSION, '7.1') >= 0) && (version_compare(PHP_VERSION, '8.1.11') <= 0)) {
             return true;
         }
     }

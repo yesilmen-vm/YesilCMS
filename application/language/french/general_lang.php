@@ -98,11 +98,14 @@ $lang['placeholder_lock']              = 'Fermer à Clé';
 $lang['placeholder_subject']           = 'Sujet';
 
 /*Table Header Lang*/
+$lang['table_header_cname']            = 'Character Name';
+$lang['table_header_gname']            = 'Guild Name';
 $lang['table_header_name']             = 'Nom';
 $lang['table_header_faction']          = 'Faction';
 $lang['table_header_total_kills']      = 'Total de Kills';
 $lang['table_header_total_honor']      = 'Total Honor';
 $lang['table_header_current_rank']     = 'Current Rank';
+$lang['table_header_kills']            = 'Kills';
 $lang['table_header_today_kills']      = 'Today de Kills';
 $lang['table_header_yersterday_kills'] = 'Kills d\'hier';
 $lang['table_header_team_name']        = 'Nom de l\'Equipe';

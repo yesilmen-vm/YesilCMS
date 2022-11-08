@@ -118,7 +118,7 @@
                     </h5>
                 <?php endif ?>
                 <?php if ($this->wowmodule->getDiscordStatus() == '1' && $this->config->item('discord_type') == '1') : ?>
-                    <h4 class="uk-h4 uk-text-bold"><i class="fab fa-discord fa-sm"></i> <?= $this->lang->line('home_discord'); ?></h4>
+                    <h4 class="uk-h4 uk-text-bold"><span uk-icon="icon: discord; ratio:1.2"></span> <?= $this->lang->line('home_discord'); ?></h4>
                     <div class="uk-text-center uk-margin-small">
                         <a target="_blank" class="discord-widget" href="https://discord.gg/<?= $this->config->item('discord_invitation'); ?>" title="Join us on Discord">
                             <img src="https://discord.com/api/guilds/<?= $discord_id ?>/widget.png?style=<?= $this->config->item('discord_style'); ?>">
@@ -126,7 +126,7 @@
                     </div>
                 <?php endif ?>
                 <?php if ($this->wowmodule->getDiscordStatus() == '1' && $this->config->item('discord_type') == '2') : ?>
-                    <h4 class="uk-h4 uk-text-bold"><i class="fab fa-discord fa-sm"></i> <?= $this->lang->line('home_discord'); ?></h4>
+                    <h4 class="uk-h4 uk-text-bold"><span uk-icon="icon: discord; ratio:1.2"></span> <?= $this->lang->line('home_discord'); ?></h4>
                     <div class="uk-text-center uk-margin-small">
                         <iframe src="https://discordapp.com/widget?id=<?= $discord_id ?>&theme=dark" width="300" height="300" allowtransparency="true" frameborder="0"></iframe>
                     </div>

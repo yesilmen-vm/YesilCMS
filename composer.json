@@ -21,7 +21,8 @@
     "ext-curl": "*",
     "ext-mysqli": "*",
     "ext-redis": "*",
-    "ext-exif": "*"
+    "ext-exif": "*",
+    "ext-gd": "*"
   },
   "suggest": {
     "paragonie/random_compat": "Provides better randomness in PHP 5.x"

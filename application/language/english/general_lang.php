@@ -99,10 +99,13 @@ $lang['placeholder_subject']           = 'Subject';
 
 /*Table header Lang*/
 $lang['table_header_name']             = 'Name';
+$lang['table_header_cname']            = 'Character Name';
+$lang['table_header_gname']            = 'Guild Name';
 $lang['table_header_faction']          = 'Faction';
-$lang['table_header_total_kills']      = 'Total Kills';
-$lang['table_header_total_honor']      = 'Total Honor';
+$lang['table_header_total_kills']      = 'Lifetime Kills';
+$lang['table_header_total_honor']      = 'Rating';
 $lang['table_header_current_rank']     = 'Current Rank';
+$lang['table_header_kills']            = 'Kills';
 $lang['table_header_today_kills']      = 'Today Kills';
 $lang['table_header_yersterday_kills'] = 'Yesterday Kills';
 $lang['table_header_team_name']        = 'Team Name';

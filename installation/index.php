@@ -102,7 +102,8 @@ if ($_POST) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>YesilCMS Installation (1/2)</title>
     <script src="../assets/core/js/jquery.min.js"></script>
-    <script src="../assets/core/fontawesome/js/all.min.js"></script>
+    <script src="../assets/core/fontawesome/js/solid.min.js"></script>
+    <script src="../assets/core/fontawesome/js/fontawesome.min.js"></script>
     <link rel="stylesheet" href="../assets/core/uikit/css/uikit.min.css"/>
     <script src="../assets/core/uikit/js/uikit.min.js"></script>
     <script src="../assets/core/uikit/js/uikit-icons.min.js"></script>
@@ -115,6 +116,10 @@ if ($_POST) {
   .uk-logo {
     background: transparent;
     color: #f3f3f3;
+  }
+
+  .uk-icon-button {
+    color: #000;
   }
 
   body {
@@ -225,7 +230,7 @@ if ($_POST) {
                 </div>
                 <div class="uk-navbar-right">
                     <div class="uk-navbar-item">
-                        <a target="_blank" href="https://github.com/yesilmen-vm/YesilCMS" class="uk-icon-button github uk-margin-small-right"><i class="fab fa-github"></i></a>
+                        <a target="_blank" href="https://github.com/yesilmen-vm/YesilCMS" class="uk-icon-button github uk-margin-small-right" uk-icon="icon: github; ratio:1.65"></a>
                     </div>
                 </div>
             </nav>
@@ -287,7 +292,7 @@ if ($_POST) {
                     <div class="uk-alert-warning" uk-alert>
                         <p><i class="fas fa-exclamation-circle"></i> It seems that you are running this CMS under <strong>Localhost.</strong> If the CMS is not in the <strong>web root</strong> folder,
                             please add the existing folder name (possibly: <strong><?= $possibleFolder; ?></strong>) to the <code>$config['base_url']</code> definition in <code>application/config/config.php</code> for a seamless installation and usage.<br/>
-                            <br/>Example: Update <code>$config['base_url']</code> from <code>$protocol . $_SERVER['HTTP_HOST'] . '/';</code> to <code>$protocol . $_SERVER['HTTP_HOST'] . '/<?= $possibleFolder ?? 'myFolder'; ?>/';</code><br/>
+                            <br/>Example: Update <code>$config['base_url']</code> from <code>$protocol . $_SERVER['HTTP_HOST'] . '/';</code> to <code>$protocol . $_SERVER['HTTP_HOST'] . '/<?= !empty($possibleFolder) && strlen($possibleFolder) > 0 ? $possibleFolder : 'myFolder'; ?>/';</code><br/>
                             <br/>Otherwise, you can safely ignore this message and continue with installation.</p>
                     </div>
                 <?php endif; ?>

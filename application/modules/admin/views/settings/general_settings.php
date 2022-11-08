@@ -87,7 +87,7 @@
                                     <label class="uk-form-label"><?= $this->lang->line('conf_discord_invid'); ?></label>
                                     <div class="uk-form-controls">
                                         <div class="uk-inline uk-width-1-1">
-                                            <span class="uk-form-icon uk-form-icon-flip"><i class="fab fa-discord"></i></span>
+                                            <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: discord"></span>
                                             <input class="uk-input" type="text" id="discord_invitation" pattern=".{,7}" value="<?= $this->config->item('discord_invitation'); ?>" required>
                                         </div>
                                     </div>
@@ -100,7 +100,7 @@
                                     <label class="uk-form-label"><?= $this->lang->line('conf_social_facebook'); ?></label>
                                     <div class="uk-form-controls">
                                         <div class="uk-inline uk-width-1-1">
-                                            <span class="uk-form-icon uk-form-icon-flip"><i class="fab fa-facebook-f"></i></span>
+                                            <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: facebook"></span>
                                             <input class="uk-input" type="url" id="social_facebook" value="<?= $this->config->item('social_facebook'); ?>">
                                         </div>
                                     </div>
@@ -109,7 +109,7 @@
                                     <label class="uk-form-label"><?= $this->lang->line('conf_social_twitter'); ?></label>
                                     <div class="uk-form-controls">
                                         <div class="uk-inline uk-width-1-1">
-                                            <span class="uk-form-icon uk-form-icon-flip"><i class="fab fa-twitter"></i></span>
+                                            <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: twitter"></span>
                                             <input class="uk-input" type="url" id="social_twitter" value="<?= $this->config->item('social_twitter'); ?>">
                                         </div>
                                     </div>
@@ -122,7 +122,7 @@
                                     <label class="uk-form-label"><?= $this->lang->line('conf_social_youtube'); ?></label>
                                     <div class="uk-form-controls">
                                         <div class="uk-inline uk-width-1-1">
-                                            <span class="uk-form-icon uk-form-icon-flip"><i class="fab fa-youtube"></i></span>
+                                            <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: youtube"></span>
                                             <input class="uk-input" type="url" id="social_youtube" value="<?= $this->config->item('social_youtube'); ?>">
                                         </div>
                                     </div>

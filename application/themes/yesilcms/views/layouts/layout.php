@@ -234,9 +234,9 @@
     <div class="footer-divider"></div>
     <div class="uk-text-center footer-social">
         <span class="footer-follow"> Follow Us</span>
-        <a target="_blank" href="<?= $this->config->item('social_facebook'); ?>" class="uk-margin-small-right footer-icon"><i class="fab fa-facebook-f"></i></a>
-        <a target="_blank" href="<?= $this->config->item('social_twitter'); ?>" class="uk-margin-small-right footer-icon"><i class="fab fa-twitter"></i></a>
-        <a target="_blank" href="<?= $this->config->item('social_youtube'); ?>" class="footer-icon"><i class="fab fa-youtube"></i></a>
+        <a target="_blank" href="<?= $this->config->item('social_facebook'); ?>" class="uk-margin-small-right footer-icon" uk-icon="icon: facebook; ratio:1.65"></a>
+        <a target="_blank" href="<?= $this->config->item('social_twitter'); ?>" class="uk-margin-small-right footer-icon" uk-icon="icon: twitter; ratio:1.65"></a>
+        <a target="_blank" href="<?= $this->config->item('social_youtube'); ?>" class="footer-icon" uk-icon="icon: youtube; ratio:1.65"></i></a>
     </div>
     <div class="uk-container uk-padding">
         <p class="uk-text-center uk-margin-small">Copyright <i class="far fa-copyright"></i> <?= date('Y'); ?> <span class="uk-text-bold"><?= $this->config->item('website_name'); ?></span>. <?= $this->lang->line('footer_rights'); ?></p>

@@ -30,7 +30,7 @@
                                 <tbody>
                                 <?php foreach ($description['general'] as $general) : ?>
                                     <tr>
-                                        <td><i class="fa-brands fa-fulcrum"></i> <?= $general ?>
+                                        <td><i class="fa-solid fa-code-commit"></i> <?= $general ?>
                                     </tr>
                                 <?php endforeach; ?>
                                 </tbody>
@@ -46,7 +46,7 @@
                                 <tbody>
                                 <?php foreach ($description['pve'] as $pve) : ?>
                                     <tr>
-                                        <td><i class="fa-brands fa-fulcrum"></i> <?= $pve ?>
+                                        <td><i class="fa-solid fa-code-commit"></i> <?= $pve ?>
                                     </tr>
                                 <?php endforeach; ?>
                                 </tbody>
@@ -62,7 +62,7 @@
                                 <tbody>
                                 <?php foreach ($description['pvp'] as $pvp) : ?>
                                     <tr>
-                                        <td><i class="fa-brands fa-fulcrum"></i> <?= $pvp ?>
+                                        <td><i class="fa-solid fa-code-commit"></i> <?= $pvp ?>
                                     </tr>
                                 <?php endforeach; ?>
                                 </tbody>

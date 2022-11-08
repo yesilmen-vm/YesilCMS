@@ -37,7 +37,7 @@
         <?= form_close(); ?>
     </div>
 </section>
-
+<?= $this->wowmodule->getreCaptchaStatus() == '1' ? '<script src="https://www.google.com/recaptcha/api.js" async defer></script>' : '' ?>
 <script>
     var csrfName = "<?= $this->security->get_csrf_token_name() ?>";
     var csrfHash = "<?= $this->security->get_csrf_hash() ?>";
@@ -111,7 +111,7 @@
                 [globalThis.csrfName]: globalThis.csrfHash
             },
             dataType: "text",
-            beforeSend: function() {
+            beforeSend: function () {
                 $.amaran({
                     'theme': 'awesome info',
                     'content': {
@@ -126,7 +126,7 @@
                     'outEffect': 'slideRight'
                 });
             },
-            success: function(response) {
+            success: function (response) {
 
                 if (response == 'emailOrUserErrP1') {
                     $.amaran({
@@ -143,7 +143,7 @@
                         'outEffect': 'slideRight'
                     });
                     $('#recoveryForm')[0].reset();
-                    setTimeout(function() {
+                    setTimeout(function () {
                         location.reload();
                     }, 2500);
                     return false;
@@ -164,7 +164,7 @@
                         'outEffect': 'slideRight'
                     });
                     $('#recoveryForm')[0].reset();
-                    setTimeout(function() {
+                    setTimeout(function () {
                         location.reload();
                     }, 2500);
                     return false;
@@ -185,7 +185,7 @@
                         'outEffect': 'slideRight'
                     });
                     $('#recoveryForm')[0].reset();
-                    setTimeout(function() {
+                    setTimeout(function () {
                         location.reload();
                     }, 2500);
                     return false;

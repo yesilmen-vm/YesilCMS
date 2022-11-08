@@ -241,7 +241,7 @@ class Admin_model extends CI_Model
     {
         $this->load->library('config_writer');
 
-        $writer = $this->config_writer->get_instance(APPPATH . 'config/blizzcms.php', 'config');
+        $writer = $this->config_writer->get_instance(APPPATH . 'config/yesilcms.php', 'config');
         $writer->write('website_name', $project);
         $writer->write('timezone', $timezone);
         $writer->write('maintenance_mode', $maintenance);
@@ -259,7 +259,7 @@ class Admin_model extends CI_Model
     {
         $this->load->library('config_writer');
 
-        $writer = $this->config_writer->get_instance(APPPATH . 'config/blizzcms.php', 'config');
+        $writer = $this->config_writer->get_instance(APPPATH . 'config/yesilcms.php', 'config');
         $writer->write('recaptcha_sitekey', $recaptcha_sitekey);
         $writer->write('recaptcha_secret', $recaptcha_secret);
         $writer->write('smtp_host', $smtphost);

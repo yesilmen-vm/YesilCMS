@@ -50,7 +50,7 @@ class Home_model extends CI_Model
     public function updateconfigs($data)
     {
         $this->load->library('config_writer');
-        $blizz = $this->config_writer->get_instance(APPPATH . 'config/blizzcms.php', 'config');
+        $blizz = $this->config_writer->get_instance(APPPATH . 'config/yesilcms.php', 'config');
 
         if ($this->config_writer->isEnabled($data['bnet'])) {
             $bnet_enable = true;
