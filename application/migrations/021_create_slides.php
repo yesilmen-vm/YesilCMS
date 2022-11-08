@@ -43,7 +43,7 @@ class Migration_create_slides extends CI_Migration
         $data = array(
             array(
                 'title'       => 'YesilCMS - Welcome to your website.',
-                'description' => 'This is a reworked version of BlizzCMS that adds compability to vMaNGOS <br> and new features such as Armory, Account Activation, Password Recovery, API infrastructure and more.',
+                'description' => 'YesilCMS is fully compatible with vMaNGOS and has many new features such as Armory, Account Activation, Password Recovery, API infrastructure and more.',
                 'type'        => '1',
                 'route'       => 's-1.jpg'
             ),

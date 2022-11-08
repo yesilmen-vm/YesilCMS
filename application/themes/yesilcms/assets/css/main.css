@@ -78,8 +78,8 @@ h6,
 .uk-navbar-nav > li > a,
 .uk-navbar-toggle {
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
-  font-weight: 300;
-  min-height: 40px;
+  font-weight: 500;
+  min-height: 50px;
 }
 
 .uk-navbar-nav > li > a,
@@ -125,13 +125,17 @@ h6,
 }
 
 .uk-navbar-dropdown {
-  background: linear-gradient(#1c2534, #161a26);
+  background: linear-gradient(#25160f, #281b0f);
   border-width: 0 1px 1px 1px;
   border-style: solid;
   border-color: rgba(255, 255, 255, 0.05);
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
   min-width: 180px;
   padding: 10px 0;
+}
+
+.uk-navbar-nav > li > a:active {
+  color: #f8b700;
 }
 
 .uk-navbar-dropdown .blizzcms-cart-dropdown {
@@ -199,6 +203,35 @@ h6,
 
 .slider-section {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.15) 0, transparent);
+}
+
+.yesilcms-overlay-primary {
+  background: #211510 url(../images/navbar_bg.jpg) repeat-x 80px 0;
+  background-size: auto 100%;
+  -webkit-box-shadow: 0 0 10px rgb(0 0 0 / 60%);
+  box-shadow: 0 0 10px rgb(0 0 0 / 60%);
+
+}
+
+.yesilcms-subnav-divider::before {
+  margin-right: 5px;
+}
+
+@media screen and (min-width: 640px) {
+  .yesilcms-overlay-primary {
+    margin-left: 5%;
+    max-width: 40%;
+    min-height: 50%;
+  }
+
+  .yesilcms-sticky-active {
+    -webkit-box-shadow: 0 5px 10px rgb(0 0 0 / 60%);
+    box-shadow: 0 5px 10px rgb(0 0 0 / 60%);
+  }
+
+  .uk-navbar-nav.nav-gap {
+    gap: 40px;
+  }
 }
 
 .main-section {
@@ -277,7 +310,7 @@ h6,
 }
 
 .uk-card-hover:hover.uk-card-default.news-card:after {
-  border-color: #00aeff;
+  border-color: #f8b700;
 }
 
 .uk-card-body {
