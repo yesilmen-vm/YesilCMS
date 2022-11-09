@@ -43,6 +43,12 @@ $config['supported_languages'] = [
         'folder'    => 'german',
         'direction' => 'ltr',
         'codes'     => ['de', 'german', 'de_DE'],
+    ],
+    'tw' => [
+        'name'      => 'taiwanese',
+        'folder'    => 'taiwanese',
+        'direction' => 'ltr',
+        'codes'     => ['tw', 'taiwanese', 'zh_TW'],
     ]
 ];
 
