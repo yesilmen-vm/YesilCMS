@@ -73,8 +73,9 @@ class Armory_model extends CI_Model
                 $qualityPatch                    = $this->getCharEquipmentQualityPatch($item['item_id'], $patch);
                 $itemList[$slots[$item['slot']]] = [
                     'item_id'      => $item['item_id'],
-                    'item_quality' => $qualityPatch['quality'],
-                    'item_patch'   => $qualityPatch['patch'],
+                    'item_slot_id' => $item['slot'],
+                    'item_quality' => $qualityPatch['quality'] ?? 0,
+                    'item_patch'   => $qualityPatch['patch'] ?? 10,
                     'item_icon'    => $this->getCharEquipDisplayIcon($item['item_id'], $patch)
                 ];
             }
@@ -345,7 +346,7 @@ class Armory_model extends CI_Model
             ];
 
             $equippedItemIDsByPatch = $world->select('entry')->where('patch=(' . $subQ . ')')->where_in('entry', $equippedItemIDs)->get('item_template t1')->result_array('entry');
-            $equippedItemIDsByPatch = array_map('intval', array_map('end', $equippedItemIDsByPatch));
+            $equippedItemIDsByPatch = array_map('intval', array_column($equippedItemIDsByPatch, 'entry'));
 
             $enchAuras = $this->getEnchantInfo($MultiRealm, $id, $equippedItemIDsByPatch);
 
@@ -512,11 +513,11 @@ class Armory_model extends CI_Model
                                  ->where_in('item_id', $equippedItemIDs)->order_by('slot', 'ASC')->get('character_inventory')->result_array(), 'item_guid'
             );
             if (! empty($equippedItemGuidList)) {
-                $enchants = $this->multiRealm->select('enchantments')->where('owner_guid', $id)->where_in('guid', $equippedItemGuidList)->get('item_instance')->result();
+                $enchants = $this->multiRealm->select('item_id, enchantments')->where('owner_guid', $id)->where_in('guid', $equippedItemGuidList)->get('item_instance')->result_array();
 
                 foreach ($enchants as $ench) {
-                    $enchAura = strtok($ench->enchantments, ' ');
-                    $enchAura == 0 ?: array_push($result, $enchAura);
+                    $enchAura = strtok($ench['enchantments'], ' ');
+                    $enchAura == 0 ?: $result[$ench['item_id']] = $enchAura;
                     // effectMiscValue1 on spell_template to automate the process
                 }
             }
@@ -706,10 +707,10 @@ class Armory_model extends CI_Model
                 }
             }
 
-            return base_url() . 'application/modules/armory/assets/images/icons/' . $displayName . '.png"';
+            return base_url() . 'application/modules/database/assets/images/icons/' . $displayName . '.png"';
         }
 
-        return base_url() . 'application/modules/armory/assets/images/icons/INV_Misc_QuestionMark.png"';
+        return base_url() . 'application/modules/database/assets/images/icons/INV_Misc_QuestionMark.png"';
     }
 
     public function searchChar($MultiRealm, $search)
@@ -744,7 +745,7 @@ class Armory_model extends CI_Model
         return $this->multiRealm->get();
     }
 
-    public function getGuildInfoByPlayerID($MultiRealm, $playerid)
+    public function getGuildInfoByPlayerID($MultiRealm, $playerid): array
     {
         $this->multiRealm = $MultiRealm;
         $this->multiRealm->select('g.guild_id, g.name');

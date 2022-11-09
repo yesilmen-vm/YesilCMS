@@ -1,13 +1,13 @@
-<section class="uk-section uk-padding-remove slider-section">
+<section class="uk-section uk-padding-remove slider-section uk-animation-fade">
     <?php if ($this->wowmodule->getSlideshowStatus()) : ?>
         <?php if ($this->home_model->getSlides()->num_rows()) : ?>
-            <div class="uk-position-relative uk-visible-toggle" uk-slideshow="animation: fade;autoplay: true;autoplay-interval: 6000;min-height: 150;max-height: 300;">
+            <div class="uk-position-relative uk-visible-toggle" uk-slideshow="animation: push;autoplay: true;autoplay-interval: 6000;min-height: 150;max-height: 360;">
                 <ul class="uk-slideshow-items">
                     <?php foreach ($slides as $slides) : ?>
                         <?php if ($slides->type == 1) : ?>
                             <li>
                                 <img src="<?= $template['location'] . 'assets/images/slides/' . $slides->route; ?>" alt="<?= $slides->title ?>" uk-cover>
-                                <div class="uk-container uk-position-relative uk-margin-large-top">
+                                <div class="uk-overlay yesilcms-overlay-primary uk-position-center-left uk-text-center uk-transition-slide-bottom">
                                     <h2 class="uk-h2 uk-position-medium uk-text-left uk-margin-remove"><?= $slides->title ?></h2>
                                     <p class="uk-position-medium uk-text-left uk-margin-remove"><?= $slides->description ?></p>
                                 </div>
@@ -34,7 +34,7 @@
         <?php endif ?>
     <?php endif ?>
 </section>
-<section class="uk-section uk-section-xsmall main-section" data-uk-height-viewport="expand: true">
+<section class="uk-section uk-section-xsmall main-section uk-animation-fade" data-uk-height-viewport="expand: true">
     <div class="uk-container">
         <div class="uk-grid uk-grid-medium uk-margin-small" data-uk-grid>
             <div class="uk-width-2-3@s">
@@ -72,7 +72,8 @@
                                 <div class="uk-card uk-card-default uk-card-body card-status">
                                     <div class="uk-grid uk-grid-small" data-uk-grid>
                                         <div class="uk-width-expand">
-                                            <h5 class="uk-h5 uk-text-bold uk-margin-small"><a href="<?= base_url('online'); ?>" class="uk-link-reset"><i class="fas fa-server"></i> <?= $this->lang->line('table_header_realm'); ?> <?= $this->wowrealm->getRealmName($charsMultiRealm->realmID); ?></a></h5>
+                                            <h5 class="uk-h5 uk-text-bold uk-margin-small"><a href="<?= base_url('online'); ?>" class="uk-link-reset"><i class="fas fa-server"></i> <?= $this->lang->line('table_header_realm'); ?> <?= $this->wowrealm->getRealmName($charsMultiRealm->realmID); ?></a>
+                                            </h5>
                                         </div>
                                         <div class="uk-width-auto">
                                             <?php if ($this->wowrealm->RealmStatus($charsMultiRealm->realmID)) : ?>
@@ -118,7 +119,7 @@
                     </h5>
                 <?php endif ?>
                 <?php if ($this->wowmodule->getDiscordStatus() == '1' && $this->config->item('discord_type') == '1') : ?>
-                    <h4 class="uk-h4 uk-text-bold"><i class="fab fa-discord fa-sm"></i> <?= $this->lang->line('home_discord'); ?></h4>
+                    <h4 class="uk-h4 uk-text-bold"><span uk-icon="icon: discord; ratio:1.2"></span> <?= $this->lang->line('home_discord'); ?></h4>
                     <div class="uk-text-center uk-margin-small">
                         <a target="_blank" class="discord-widget" href="https://discord.gg/<?= $this->config->item('discord_invitation'); ?>" title="Join us on Discord">
                             <img src="https://discord.com/api/guilds/<?= $discord_id ?>/widget.png?style=<?= $this->config->item('discord_style'); ?>">
@@ -126,7 +127,7 @@
                     </div>
                 <?php endif ?>
                 <?php if ($this->wowmodule->getDiscordStatus() == '1' && $this->config->item('discord_type') == '2') : ?>
-                    <h4 class="uk-h4 uk-text-bold"><i class="fab fa-discord fa-sm"></i> <?= $this->lang->line('home_discord'); ?></h4>
+                    <h4 class="uk-h4 uk-text-bold"><span uk-icon="icon: discord; ratio:1.2"></span> <?= $this->lang->line('home_discord'); ?></h4>
                     <div class="uk-text-center uk-margin-small">
                         <iframe src="https://discordapp.com/widget?id=<?= $discord_id ?>&theme=dark" width="300" height="300" allowtransparency="true" frameborder="0"></iframe>
                     </div>

@@ -8,10 +8,11 @@
                 <div class="uk-card uk-card-default uk-margin-small">
                     <div class="uk-card-header">
                         <div class="uk-grid uk-grid-small" data-uk-grid>
+                            <img class="uk-margin-small-bottom" src="<?= base_url() . 'assets/images/news/' . $this->news_model->getNewImage($idlink); ?>" alt="<?= $this->news_model->getNewTitle($idlink); ?>">
                             <div class="uk-width-expand@s">
-                                <h5 class="uk-h5 uk-text-bold"><i class="fas fa-newspaper"></i> <?= $this->news_model->getNewTitle($idlink); ?></h5>
+                                <h3 class="uk-h3 uk-text-bold"><i class="fas fa-newspaper"></i> <?= $this->news_model->getNewTitle($idlink); ?></h3>
                             </div>
-                            <div class="uk-width-auto@s">
+                            <div class="uk-width-auto@s uk-flex uk-flex-middle">
                                 <p class="uk-text-small"><i class="far fa-clock"></i> <?= date('F j, Y, h:i a', $this->news_model->getNewlogDate($idlink)); ?></p>
                             </div>
                         </div>
@@ -33,9 +34,9 @@
                                         } ?> uk-flex uk-flex-center">
                                             <div class="topic-author-avatar profile">
                                                 <?php if ($this->wowgeneral->getUserInfoGeneral($commentss->author)->num_rows()) : ?>
-                                                    <img src="<?= base_url('assets/images/profiles/' . $this->wowauth->getNameAvatar($this->wowauth->getImageProfile($commentss->author))); ?>" alt="" />
+                                                    <img src="<?= base_url('assets/images/profiles/' . $this->wowauth->getNameAvatar($this->wowauth->getImageProfile($commentss->author))); ?>" alt=""/>
                                                 <?php else : ?>
-                                                    <img src="<?= base_url('assets/images/profiles/default.png'); ?>" alt="" />
+                                                    <img src="<?= base_url('assets/images/profiles/default.png'); ?>" alt=""/>
                                                 <?php endif; ?>
                                             </div>
                                         </div>
@@ -57,7 +58,7 @@
                             </div>
                         </div>
                     <?php endforeach; ?>
-                    <?php if (!$this->wowauth->isLogged()) : ?>
+                    <?php if (! $this->wowauth->isLogged()) : ?>
                         <div>
                             <div class="uk-card uk-card-default uk-card-body">
                                 <h3 class="uk-h3 uk-text-center"><span uk-icon="icon: comment; ratio: 1.5"></span> <?= $this->lang->line('forum_comment_header'); ?></h3>
@@ -67,7 +68,7 @@
                                 </div>
                             </div>
                         </div>
-                    <?php elseif (!$this->wowauth->getActivationStatus()) : ?>
+                    <?php elseif (! $this->wowauth->getActivationStatus()) : ?>
                         <div>
                             <div class="uk-card uk-card-default uk-card-body">
                                 <h3 class="uk-h3 uk-text-center"><span uk-icon="icon: comment; ratio: 1.5"></span> <?= $this->lang->line('forum_comment_header'); ?></h3>
@@ -152,7 +153,7 @@
                     [globalThis.csrfName]: globalThis.csrfHash
                 },
                 dataType: "text",
-                beforeSend: function() {
+                beforeSend: function () {
                     $.amaran({
                         'theme': 'awesome info',
                         'content': {
@@ -167,7 +168,7 @@
                         'outEffect': 'slideRight'
                     });
                 },
-                success: function(response) {
+                success: function (response) {
                     if (!response)
                         alert(response);
 
@@ -203,7 +204,7 @@
                     [globalThis.csrfName]: globalThis.csrfHash
                 },
                 dataType: "text",
-                beforeSend: function() {
+                beforeSend: function () {
                     $.amaran({
                         'theme': 'awesome info',
                         'content': {
@@ -218,7 +219,7 @@
                         'outEffect': 'slideRight'
                     });
                 },
-                success: function(response) {
+                success: function (response) {
                     if (!response)
                         alert(response);
 

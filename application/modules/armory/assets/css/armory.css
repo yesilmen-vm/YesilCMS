@@ -736,7 +736,6 @@
   font-family: Semplicita Pro, Open Sans, Arial, Helvetica, sans-serif;
   font-weight: 700;
   font-size: 2.2395rem;
-  line-height: 1.5;
   line-height: 1em
 }
 
@@ -874,6 +873,34 @@
   left: 50%;
   transform: translate(-50%, 0);
   width: 0;
+}
+
+@media only screen and (max-width: 959px) {
+  #show3DModelFast, #show3DModelDetailed, #patch {
+    margin-left: -5%;
+    min-width: 110%;
+    text-align: left;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .model-area {
+    margin-top: 50%;
+  }
+
+  #placeholder {
+    position: absolute;
+    top: 10%;
+    width: 50%;
+    height: 50%;
+    margin: 0 25% 0 25%;
+  }
+
+  #show3DModelFast, #show3DModelDetailed, #patch {
+    margin-left: 0;
+    min-width: 100%;
+    text-align: left;
+  }
 }
 
 @keyframes fadeIn {

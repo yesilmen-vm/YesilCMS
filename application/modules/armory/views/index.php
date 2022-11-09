@@ -11,10 +11,12 @@
 
 ?>
 <link rel="stylesheet" href="<?= base_url() . 'application/modules/armory/assets/css/armory.css'; ?>"/>
+<link rel="stylesheet" href="<?= base_url() . 'application/modules/database/assets/css/database.css'; ?>"/>
 <section class="uk-section uk-section-xsmall uk-padding-remove slider-section">
     <div class="uk-background-cover header-height header-section" style="background-image: url('<?= base_url() . 'application/themes/yesilcms/assets/images/headers/' . HEADER_IMAGES[array_rand(HEADER_IMAGES)] . '.jpg'; ?>')"></div>
 </section>
 <section class="uk-section uk-section-xsmall main-section bg-<?= strtolower($character['faction']) ?>" data-uk-height-viewport="expand: true">
+    <div id="tooltip" class="tooltip"></div>
     <div class="uk-container">
         <article class="uk-article">
             <div class="uk-card uk-card-body uk-margin-small">
@@ -101,7 +103,10 @@
                             <?php foreach ($slots['L'] as $slot) : ?>
                                 <div class="cp-item">
                                     <?php if (isset($character['equipped_items'][$slot])) : ?>
-                                        <a <?= showTooltip($character['equipped_items'][$slot]['item_id'], ($character['equipped_items'][$slot]['item_patch'] ?? '99'), $patch) ?> role="button" target="_blank" class="ControlledModalToggle">
+                                        <a <?= showTooltip($character['equipped_items'][$slot]['item_id'], ($character['equipped_items'][$slot]['item_patch'] ?? 99), $patch, $lang) ?> data-item='item=<?= $character['equipped_items'][$slot]['item_id'] ?>' data-patch='<?= dataPatch($patch, $lang) ?>'
+                                                                                                                                                                                        data-item-slot='<?= $character['equipped_items'][$slot]['item_slot_id'] ?>' data-realm='1' role="button"
+                                                                                                                                                                                        target="_blank"
+                                                                                                                                                                                        class="ControlledModalToggle">
                                             <div class="cp-itemSlot cp-item-icon cp-gameicon-slot cp-gameicon cp-gameicon-<?= $character['equipped_items'][$slot]['item_quality'] ?>">
                                                 <div class="cp-gameicon-icon" style="background-image: url('<?= $character['equipped_items'][$slot]['item_icon'] ?>');"></div>
                                             </div>
@@ -118,7 +123,10 @@
                             <?php foreach ($slots['R'] as $slot) : ?>
                                 <div class="cp-item">
                                     <?php if (isset($character['equipped_items'][$slot])) : ?>
-                                        <a <?= showTooltip($character['equipped_items'][$slot]['item_id'], ($character['equipped_items'][$slot]['item_patch'] ?? '99'), $patch) ?> role="button" target="_blank" class="ControlledModalToggle">
+                                        <a <?= showTooltip($character['equipped_items'][$slot]['item_id'], ($character['equipped_items'][$slot]['item_patch'] ?? 99), $patch, $lang) ?> data-item='item=<?= $character['equipped_items'][$slot]['item_id'] ?>' data-patch='<?= dataPatch($patch, $lang) ?>'
+                                                                                                                                                                                        data-item-slot='<?= $character['equipped_items'][$slot]['item_slot_id'] ?>' data-realm='1' role="button"
+                                                                                                                                                                                        target="_blank"
+                                                                                                                                                                                        class="ControlledModalToggle">
                                             <div class="cp-itemSlot cp-item-icon cp-gameicon-slot cp-gameicon cp-gameicon-<?= $character['equipped_items'][$slot]['item_quality'] ?>">
                                                 <div class="cp-gameicon-icon" style="background-image: url('<?= $character['equipped_items'][$slot]['item_icon'] ?>');"></div>
                                             </div>
@@ -135,7 +143,10 @@
                             <?php foreach ($slots['B'] as $slot) : ?>
                                 <div class="cp-item">
                                     <?php if (isset($character['equipped_items'][$slot])) : ?>
-                                        <a <?= showTooltip($character['equipped_items'][$slot]['item_id'], ($character['equipped_items'][$slot]['item_patch'] ?? '99'), $patch) ?> role="button" target="_blank" class="ControlledModalToggle">
+                                        <a <?= showTooltip($character['equipped_items'][$slot]['item_id'], ($character['equipped_items'][$slot]['item_patch'] ?? 99), $patch, $lang) ?> data-item='item=<?= $character['equipped_items'][$slot]['item_id'] ?>' data-patch='<?= dataPatch($patch, $lang) ?>'
+                                                                                                                                                                                        data-item-slot='<?= $character['equipped_items'][$slot]['item_slot_id'] ?>' data-realm='1' role="button"
+                                                                                                                                                                                        target="_blank"
+                                                                                                                                                                                        class="ControlledModalToggle">
                                             <div class="cp-itemSlot cp-item-icon cp-gameicon-slot cp-gameicon cp-gameicon-<?= $character['equipped_items'][$slot]['item_quality'] ?>">
                                                 <div class="cp-gameicon-icon" style="background-image: url('<?= $character['equipped_items'][$slot]['item_icon'] ?>');"></div>
                                             </div>
@@ -229,7 +240,7 @@
                                     $primary['max']
                                 ) ?>%"></div>
                                 <div class="progressbar-content">
-                                    <span class="profession-logo" style="background-image: url('<?= base_url() ?>/application/modules/armory/assets/images/icons/<?= $primary['icon'] ?>.png')">&nbsp;</span> <?= $primary['name'] ?>
+                                    <span class="profession-logo" style="background-image: url('<?= base_url() ?>/application/modules/database/assets/images/icons/<?= $primary['icon'] ?>.png')">&nbsp;</span> <?= $primary['name'] ?>
                                     <span style="float:right"><?= $primary['value'] . ' / ' . $primary['max'] ?></span>
                                     <div class="progressbar-body"></div>
                                 </div>
@@ -261,7 +272,7 @@
                                     $secondary['max']
                                 ) ?>%"></div>
                                 <div class="progressbar-content">
-                                    <span class="profession-logo" style="background-image: url('<?= base_url() ?>/application/modules/armory/assets/images/icons/<?= $secondary['icon'] ?>.png')">&nbsp;</span> <?= $secondary['name'] ?>
+                                    <span class="profession-logo" style="background-image: url('<?= base_url() ?>/application/modules/database/assets/images/icons/<?= $secondary['icon'] ?>.png')">&nbsp;</span> <?= $secondary['name'] ?>
                                     <span style="float:right"><?= $secondary['value'] . ' / ' . $secondary['max'] ?></span>
                                     <div class="progressbar-body"></div>
                                 </div>
@@ -326,10 +337,13 @@
         </article>
     </div>
 </section>
+<script type="text/javascript" src="<?= base_url() . 'application/modules/database/assets/js/tooltip.js'; ?>"></script>
 <script type="module" src="<?= base_url() . 'application/modules/armory/assets/js/armory.js'; ?>"></script>
 <script>
-    const baseURL = "<?= base_url(); ?>";
-
+    const baseURL = "<?= base_url($lang); ?>";
+    const imgURL = "<?= base_url() . 'application/modules/database/assets/images/icons/'; ?>";
+    const tooltipEqItemArr = <?= json_encode($character['equipped_item_ids'], JSON_NUMERIC_CHECK) ?>;
+    const tooltipCharData = <?= json_encode($character['enchanted_items'] ?? [], JSON_NUMERIC_CHECK) ?>;
     const character = {
         "race": <?= $character['race'] ?>,
         "gender": <?= $character['gender'] ?>,
@@ -347,8 +361,6 @@
               ) . PHP_EOL ?>
         <?php /*for php>=7.4 */ //"items": <?= count($character['equipped_item_ids']) === 0 ? '[]' . PHP_EOL : json_encode(array_map(fn ($i) => array_values(get_object_vars($i)), $character['equipped_item_model'])) . PHP_EOL?>
     };
-
     const equipments = <?= count($character['equipped_item_ids']) === 0 ? '[]' . PHP_EOL : $character['equipped_item_id_model'] ?>;
 </script>
-<script type="text/javascript" src="https://wow.zamimg.com/modelviewer/live/viewer/viewer.min.js"></script>
-<script type="text/javascript" src="<?= base_url() . 'application/modules/armory/assets/js/power.js'; ?>"></script>
+<script type="text/javascript" src="https://wow.zamimg.com/modelviewer/classic/viewer/viewer.min.js"></script>

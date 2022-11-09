@@ -39,7 +39,7 @@
                   <label class="uk-form-label"><?= $this->lang->line('placeholder_icon_name'); ?></label>
                   <div class="uk-form-controls">
                     <div class="uk-inline uk-width-1-1">
-                      <span class="uk-form-icon uk-form-icon-flip"><i class="fab fa-font-awesome-flag"></i></span>
+                      <span class="uk-form-icon uk-form-icon-flip"><i class="fas fa-image"></i></span>
                       <input class="uk-input" type="text" id="menu_icon" placeholder="<?= $this->lang->line('placeholder_icon_name'); ?>" required>
                     </div>
                   </div>

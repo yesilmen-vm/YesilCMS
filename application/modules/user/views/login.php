@@ -50,3 +50,4 @@
         <?= form_close(); ?>
     </div>
 </section>
+<?= $this->wowmodule->getreCaptchaStatus() == '1' ? '<script src="https://www.google.com/recaptcha/api.js" async defer></script>' : '' ?>

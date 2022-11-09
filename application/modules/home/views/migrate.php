@@ -12,7 +12,8 @@ if ($this->config->item('migrate_status') == 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>YesilCMS Installation (2/2)</title>
     <script src="<?= base_url('assets/core/js/jquery.min.js'); ?>"></script>
-    <script src="<?= base_url('assets/core/fontawesome/js/all.min.js'); ?>" defer></script>
+    <script src="<?= base_url('assets/core/fontawesome/js/solid.min.js'); ?>" defer></script>
+    <script src="<?= base_url('assets/core/fontawesome/js/fontawesome.min.js'); ?>" defer></script>
     <link rel="stylesheet" href="<?= base_url('assets/core/uikit/css/uikit.min.css'); ?>"/>
     <script src="<?= base_url('assets/core/uikit/js/uikit.min.js'); ?>"></script>
     <script src="<?= base_url('assets/core/uikit/js/uikit-icons.min.js'); ?>"></script>
@@ -23,6 +24,10 @@ if ($this->config->item('migrate_status') == 0) {
   html, p, a, .uk-alert, .uk-logo {
     background: transparent;
     color: #f3f3f3;
+  }
+
+  .uk-icon-button {
+    color: #000;
   }
 
   body {
@@ -56,7 +61,7 @@ if ($this->config->item('migrate_status') == 0) {
                 </div>
                 <div class="uk-navbar-right">
                     <div class="uk-navbar-item">
-                        <a target="_blank" href="https://github.com/yesilmen-vm/YesilCMS" class="uk-icon-button github uk-margin-small-right"><i class="fab fa-github"></i></a>
+                        <a target="_blank" href="https://github.com/yesilmen-vm/YesilCMS" class="uk-icon-button github uk-margin-small-right" uk-icon="icon: github; ratio:1.65"></a>
                     </div>
                 </div>
             </nav>

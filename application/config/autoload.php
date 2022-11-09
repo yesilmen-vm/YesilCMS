@@ -104,7 +104,8 @@ $autoload['helper'] = [
     'form',
     'html',
     'language',
-    'modules'
+    'modules',
+    'api'
 ];
 
 /*
@@ -120,7 +121,7 @@ $autoload['helper'] = [
 |
 */
 $autoload['config'] = [
-    'blizzcms',
+    'yesilcms',
     'seo'
 ];
 

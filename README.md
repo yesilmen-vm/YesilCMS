@@ -3,17 +3,25 @@
 
 **YesilCMS** is based on [BlizzCMS](https://github.com/WoW-CMS/BlizzCMS) and specifically adapted for [VMaNGOS Core](https://github.com/vmangos/core) and includes new features and many bug fixes.
 
+You can check out the demo on through here; [YesilCMS Demo](https://yesilcms.page).
+
 ## Features
 
 In addition to the existing features of BlizzCMS, some of the added features are as follows;
 
-- Complete VMaNGOS compability.
+- **Complete VMaNGOS compability.**
 - New installation script that directs the user based on OS/Environment.
 - Tweaks to work on multiple Web Servers including Apache/Nginx/IIS.
-- Redis caching for *nix operating systems.
+- **Redis caching** for *nix operating systems.
+- Advanced static caching. (optional, have some side-effects for logged in users)
 - Functioning [reCAPTCHA](https://www.google.com/recaptcha/admin/create).
 - New lightweight dark theme.
-- Brand new customizable armory.
+- Brand new **built-in database viewer** *(WIP(\*))*.
+  - Progressive database search (1.2 to 1.12)
+  - Item search with all related data.
+  - Spell search with all related data and dev-required data.
+  - Object, Creature and Quest page is in WIP state. (*)
+- Brand new **customizable armory.**
   - Base character info
   - 3D Model Viewer (Fast: Uses plain `displayID`, Detailed: Converts old `displayID` to Classic `displayID` using Classic's DBC. You can also create a separate table instead of remote call.)
   - Dynamic Base Stats
@@ -22,10 +30,21 @@ In addition to the existing features of BlizzCMS, some of the added features are
   - PvP Stats
   - Ability to show enchants on items (by using WoWHead's tooltip instead of ClassicDB)
   - Ability to show all character stats instead of just base-ones
-- Unique Timeline Module with responsive design and full flexibility.
+- Brand new **PvP Page**
+  - All pvp data that player may want to see.
+  - Wide filtering option.
+    - Ability to filter by All Time and Last Week
+    - Ability to filter by Faction
+    - Ability to filter by specific name
+- Unique **Timeline Module** with responsive design and full flexibility.
+  - Ability to add any patch on choice (including custom ones)
+  - Ability to order automatically or custom regardless of date
+  - Separated Description, General, PvE and PvP sections better for maintainability.
+  - Ability to add unique image for each patch.
 - Rest API implementation for future developments.
-- Built-in account activation.
-- Built-in account recovery.
+- Built-in **account activation.**
+- Built-in **account recovery.**
+- Built-in **tooltip, item and spell viewer.**
 - Built-in dynamic CSRF protection on each page.
 - Tweaked Admin Panel. (SMTP tester, handlers and logs etc.)
 - On-the-fly downloadable Realmlist.
@@ -90,7 +109,7 @@ Create required Database & User for CMS:
 Then go to the site and proceed with the installation instructions.
 
 ## API Reference
-There is only 1 method available yet, all CRUD operations are planned to be done from here in order to ensure infrastructure change afterwards.
+There are 5 only method available yet, all CRUD operations are planned to be done from here in order to ensure infrastructure change afterwards.
 
 #### Get new display ID
 Takes `item_id` and returns new `ItemDisplayInfoID` from Classic build  (1.14.3.44403) on [WoW Tools](https://github.com/Marlamin/wow.tools). DBC can be downloaded and used locally as well.
@@ -99,9 +118,70 @@ Takes `item_id` and returns new `ItemDisplayInfoID` from Classic build  (1.14.3.
   GET /api/v1/item/newdisplayid/item_id
 ```
 
-| Parameter | Type      | Description           |
-|:----------|:----------|:----------------------|
-| `item_id` | `integer` | **Required**. Item ID |
+| Parameter | Type      | Description              |
+|:----------|:----------|:-------------------------|
+| `item_id` | `integer` | **Required**. Item entry |
+
+#### Get Item Info
+Takes `item_id` and `patch` and returns information of given item if exists in database within given patch.
+
+```http
+  GET /api/v1/item/item_id/patch
+```
+
+| Parameter | Type      | Description                         |
+|:----------|:----------|:------------------------------------|
+| `item_id` | `integer` | **Required**. Item entry            |
+| `patch`   | `integer` | **Optional**. Patch version of item |
+
+#### Get Item Tooltip Info
+Takes `item_id` and `patch` and returns `id`, `type`, `name`, `icon`, `quality` and `tooltip`. Tooltip parameter will be
+html formatted.
+
+```http
+  GET /api/v1/tooltip/item/item_id/patch
+```
+
+| Parameter | Type      | Description                         |
+|:----------|:----------|:------------------------------------|
+| `item_id` | `integer` | **Required**. Item entry            |
+| `patch`   | `integer` | **Optional**. Patch version of item |
+
+#### Get Spell Tooltip Info
+Takes `spell_id` and `patch` and returns `id`, `type`, `name`, `icon`, and `tooltip`. Tooltip parameter will be
+html formatted.
+
+```http
+  GET /api/v1/tooltip/spell/spell_id/patch
+```
+
+| Parameter  | Type      | Description                                                                    |
+|:-----------|:----------|:-------------------------------------------------------------------------------|
+| `spell_id` | `integer` | **Required**. Spell entry                                                      |
+| `patch`    | `integer` | **Optional**. Patch version of spell (build converted to patch automatically.) |
+
+#### Search Database
+Takes `query` and `patch` and returns matching Item and Spells in database.
+
+```http
+  POST /api/v1/search_db
+```
+
+| Parameter | Type      | Description                                                        |
+|:----------|:----------|:-------------------------------------------------------------------|
+| `query`   | `string`  | **Required**. Search query                                         |
+| `patch`   | `integer` | **Optional**. Patch version (by default its 10)                    |
+| `token`   | `string`  | **Required when** CSRF is enabled. Do not confuse it with API key. |
+
+*Note: `token` parameter should be renamed to configured `csrf_token_name`.*
+
+
+## Roadmap
+
+- Minimize the code to remain compatible only with vMaNGOS and other vanilla emulators.
+- Add Object, Quest and NPC structure for database.
+- Customize static-based cache structure. (Create a different cache structure for the visitor and the logged in user.)
+- Migrate existing framework from Codeigniter 3 to Laravel 9.
 
 ## License
 

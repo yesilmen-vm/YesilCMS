@@ -13,11 +13,19 @@ user_guide_src/cilexer/dist/*
 user_guide_src/cilexer/pycilexer.egg-info/*
 
 #CI 3
+.DS_Store
+application/cache/*
+!application/cache/index.html
+!application/cache/.htaccess
+
 application/logs/*
 !application/logs/index.html
 !application/logs/.htaccess
 #Disabled for easy installation
 #/vendor/
+
+#YesilCMS
+application/modules/armory/assets/js/viewer.min.js
 
 #Composer
 composer.lock
@@ -29,6 +37,7 @@ composer.lock
 #IDE
 .idea/*
 phpstorm.php
+/nbproject/
 
 # PHPUnit
 /app/phpunit.xml
@@ -49,3 +58,12 @@ phpstorm.php
 .directory
 .Trash-*
 .nfs*
+
+## Sublime Text cache files
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+/tests/tests/
+/tests/results/

@@ -92,6 +92,31 @@ class Armory extends MX_Controller
             $character['equipped_item_ids']      = $equippedItemIDs;
             $character['equipped_item_model']    = $this->armory_model->getCharEquipDisplayModel($id, $character['equipped_item_ids'], $character['class'], false, $patch);
             $character['equipped_item_id_model'] = json_encode($this->armory_model->getCharEquipDisplayModel($id, $character['equipped_item_ids'], $character['class'], true, $patch));
+            $character['enchanted_items']        = $this->armory_model->getEnchantInfo($currentRealm, $id, $equippedItemIDs);
+
+            if ($character['enchanted_items']) {
+                $enchantListCache = $this->wowgeneral->getRedisCMS() ? $this->cache->redis->get('enchListArrStaticDBC') : false;
+
+                if ($enchantListCache) {
+                    $enchantDBC = $enchantListCache;
+                } else {
+                    $this->load->config("shared_dbc_enchants");
+                    $enchantDBC = $this->config->item('enchants');
+
+                    if ($this->wowgeneral->getRedisCMS() && $enchantDBC) {
+                        // Cache for 30 day
+                        $this->cache->redis->save('enchListArrStaticDBC', $enchantDBC, 60 * 60 * 24 * 30);
+                    }
+                }
+
+                foreach ($character['equipped_items'] as $item) //TODO: get rid of this foreach
+                {
+                    if (array_key_exists($item['item_id'], $character['enchanted_items'])) {
+                        $enchData[$item['item_slot_id']] = ['enchant' => ['id' => $character['enchanted_items'][$item['item_id']], 'description' => ($enchantDBC[$character['enchanted_items'][$item['item_id']]] ?? '')]];
+                    }
+                }
+            }
+            $character['enchanted_items'] = $enchData ?? [];
         } else {
             $character['equipped_item_ids'] = [];
         }
@@ -106,13 +131,14 @@ class Armory extends MX_Controller
             'id'               => $id,
             'patch'            => $patch ?? '',
             'realmid'          => $realmid,
-            'pagetitle'        => 'Character Armory',
+            'pagetitle'        => 'Character > ' . $character['name'],
             'currentRealm'     => $currentRealm,
             'currentRealmName' => $currentRealmName,
             'slots'            => $slots,
             'character'        => $character,
             'lang'             => $this->lang->lang(),
         ];
+
         $this->template->build('index', $data);
     }
 

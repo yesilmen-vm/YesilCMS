@@ -59,7 +59,7 @@ endif; ?>
                         <div>
                             <div class="uk-transition-toggle" tabindex="0">
                                 <div class="uk-card uk-card-body uk-card-donate uk-text-center uk-transition-scale-up uk-transition-opaque">
-                                    <i class="fab fa-paypal fa-3x"></i>
+                                    <i class="fas fa-hand-holding-dollar fa-3x"></i>
                                     <h2 class="uk-margin-small uk-text-bold"><?= $donateList->name ?><br>
                                         <sup><?= $this->config->item('paypal_currency_symbol'); ?></sup><?= $donateList->price ?>
                                     </h2>

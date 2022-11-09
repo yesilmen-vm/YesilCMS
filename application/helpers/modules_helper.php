@@ -242,7 +242,7 @@ function getRankTitle(int $rank): array
  * @param  int  $class
  * @param       $spirit
  *
- * Its probably not accurate but should be close.
+ * It's probably not accurate but should be close.
  * https://vanilla-wow-archive.fandom.com/wiki/Spirit
  * https://github.com/yutsuku/BetterCharacterStats/blob/master/helper.lua#L919
  *
@@ -370,10 +370,11 @@ function guessMainSpec(int $class, $charStats): array
     return $stats;
 }
 
+
 /**
  * @param $inp
  *
- * @return mixed|string
+ * @return string|int
  */
 function formatStats($inp)
 {
@@ -392,6 +393,10 @@ function formatStats($inp)
 function formatPercentage($inp): string
 {
     if (isset($inp)) {
+        if ((float)$inp < 0.01) {
+            return sprintf('%0.3f', $inp) . '%';
+        }
+
         return sprintf('%0.2f', $inp) . '%';
     }
 
@@ -472,19 +477,525 @@ function getPatchName($patch): string
 }
 
 /**
- * @param $id
- * @param $item_patch
- * @param $selected_patch
+ * @param          $id
+ * @param          $item_patch
+ * @param          $selected_patch
+ * @param  string  $lang
  *
  * @return string
  */
-function showTooltip($id, $item_patch, $selected_patch): string
+function showTooltip($id, $item_patch, $selected_patch, string $lang = 'en'): string
 {
     if (empty($selected_patch) || $selected_patch === 10) {
-        return 'href="https://classicdb.ch/?item=' . $id . '"';
+        return 'href="' . base_url() . $lang . '/item/' . $id . '"';
     } elseif ($item_patch === 99) {
-        return 'class="tooltipLink" data-tooltip="This item doesn\'t exists in selected patch: ' . getPatchName($selected_patch) . '"';
+        return 'class="tooltipLink" data-tooltip="This item does not exists in selected patch: ' . getPatchName($selected_patch) . '"';
     } else {
-        return 'href="https://classicdb.ch/?item=' . $id . '-' . $item_patch . '"';
+        return 'href="' . base_url() . $lang . '/item/' . $id . '-' . $item_patch . '"';
+    }
+}
+
+/**
+ * @param $patch
+ *
+ * @return int
+ */
+function dataPatch($patch): int
+{
+    if (! empty($patch) || strlen($patch) > 0) {
+        return (int)$patch;
+    }
+
+    return 10;
+}
+
+/**
+ * @param $rank
+ *
+ * @return string
+ */
+function creatureRank($rank): string
+{
+    $ranks = ['Normal', 'Elite ', 'Rare Elite', 'Boss', 'Rare '];
+
+    if (! empty($rank) || strlen($rank) > 0) {
+        return $ranks[$rank];
+    }
+
+    return 'Unknown';
+}
+
+/**
+ * @param  string  $text
+ * @param  bool    $rt
+ * @param  string  $extra
+ *
+ * @return string
+ */
+function tableText(string $text, bool $rt = false, string $extra = ''): string
+{
+    if (! empty($text) || strlen($text) > 0) {
+        return $text . ($extra ? ' ' . $extra : '');
+    }
+
+    if ($rt) {
+        return '<span class="q0">n/a</span>';
+    }
+
+    return 'None';
+}
+
+function effectAttributes(int $effect, int $id, $patch = 10): ?string
+{
+    if ($effect === 8 || $effect === 30 || $effect === 62) {
+        $powType = [0 => "Mana", 1 => "Rage", 2 => "Focus", 3 => "Energy", 4 => "Happiness"];
+
+        return $powType[$id];
+    } elseif ($effect === 16) { //quest complete, later add quest page when implemented
+        $CI =& get_instance();
+
+        return $CI->Database_model->getQuestTitle($id, $patch);
+    } elseif ($effect === 28 || $effect === 56 || $effect === 74 || $effect === 90 || $effect === 112 || $effect === 134) {
+        $CI =& get_instance();
+
+        return $CI->Database_model->getCreatureName($id, $patch); //creature name, later add npc page when implemented
+    } elseif ($effect === 33) {
+        $CI =& get_instance();
+
+        return $CI->config->item('lock_type')[$id] ?? $id;
+    } elseif ($effect === 53 || $effect === 54 || $effect === 92 || $effect === 156) {
+        return $id;
+    } elseif ($effect === 38 || $effect === 126) {
+        $dispType = [null, "Magic", "Curse", "Disease", "Poison", "Stealth", "Invisibility", null, null, "Enrage"];
+
+        return $dispType[$id] ?? $id;
+    } elseif ($effect === 39) {
+        $lang = [1 => "Orcish", 2 => "Darnassian", 3 => "Taurahe", 6 => "Dwarvish", 7 => "Common", 8 => "Demonic", 11 => "Draconic", 13 => "Gnomish", 14 => "Troll"];
+
+        return $lang[$id] ?? $id;
+    } elseif ($effect === 50 || $effect === 76 || $effect === 104 || $effect === 105 || $effect === 106 || $effect === 107) {
+        $CI =& get_instance();
+
+        return $CI->Database_model->getGOName($id, $patch); //gameobject name, later add obj page when implemented
+    } elseif ($effect === 86) {
+        $actions = [
+            "None",
+            "Animate Custom 0",
+            "Animate Custom 1",
+            "Animate Custom 2",
+            "Animate Custom 3",
+            "Disturb / Trigger Trap",
+            "Unlock",
+            "Lock",
+            "Open",
+            "Unlock & Open",
+            "Close",
+            "Toggle Open",
+            "Destroy",
+            "Rebuild",
+            "Creation",
+            "Despawn",
+            "Make Inert"
+        ];
+
+        return $actions[$id] ?? $id;
+    } elseif ($effect === 108) {
+        $CI =& get_instance();
+
+        return $CI->config->item('spell_mechanics')[$id] ?? $id;
+    } elseif ($effect === 44 || $effect === 118) {
+        $CI =& get_instance();
+
+        return $CI->config->item('skilline')[$id] ?? $id;
+    } elseif ($effect === 103) {
+        $CI =& get_instance();
+
+        return $CI->Database_model->getFactionName($id, $patch);
+    } elseif ($effect === 123) {
+        return $id;
+    }
+
+    return null;
+}
+
+/**
+ * @param  int  $aura
+ * @param  int  $id
+ * @param  int  $patch
+ *
+ * @return string
+ */
+function auraAttributes(int $aura, int $id, int $patch = 10): string
+{
+    if ($aura === 17) {
+        $val = ["General", "Trap"];
+
+        return $val[$id];
+    } elseif ($aura === 19) {
+        $invType = [null, "General", null, "Trap", null, null, "Drunk", null, null, null, null, null];
+
+        return $invType[$id] ?? $id;
+    } elseif ($aura === 21 || $aura === 24 || $aura === 35 || $aura === 85 || $aura === 100 || $aura === 132) {
+        $powType = [0 => "Mana", 1 => "Rage", 2 => "Focus", 3 => "Energy", 4 => "Happiness"];
+
+        return $powType[$id];
+    } elseif ($aura === 29 || $aura === 80 || $aura === 137) {
+        $stats = ["Strength", "Agility", "Stamina", "Intellect", "Spirit"];
+        $mask  = $id < 0 ? 0x1F : 1 << $id;
+        $res   = [];
+        for ($j = 0; $j < 5; $j++) {
+            if ($mask & (1 << $j)) {
+                $res[] = $stats[$j];
+            }
+        }
+
+        return $res ? implode(", ", $res) : $stats[$id];
+    } elseif ($aura === 36) {
+        $shType = [
+            "Default",
+            "Cat Form",
+            "Tree of Life",
+            "Travel Form",
+            "Aquatic Form",
+            "Bear From",
+            "Ambient",
+            "Ghoul",
+            "Dire Bear Form",
+            "Steve's Ghoul",
+            "Tharon'ja Skeleton",
+            "Darkmoon - Test of Strength",
+            "BLB Player",
+            "Shadowdance",
+            "Creature - Bear",
+            "Creature - Cat",
+            "Ghostwolf",
+            "Battle Stance",
+            "Defensive Stance",
+            "Berserker Stance",
+            "Test",
+            "Zombie",
+            "Metamorphosis",
+            null,
+            null,
+            "Undead",
+            "Frenzy",
+            "Swift Flight Form",
+            "Shadow Form",
+            "Flight Form",
+            "Stealth",
+            "Moonkin Form",
+            "Spirit of Redemption"
+        ];
+
+        return $shType[$id] ?? $id;
+    } elseif ($aura === 37) {
+        $CI =& get_instance();
+
+        return $CI->config->item('effect_names')[$id] ?? $id;
+    } elseif ($aura === 38) {
+        $CI =& get_instance();
+
+        return $CI->config->item('aura_names')[$id] ?? $id;
+    } elseif ($aura === 41) {
+        $dispType = [null, "Magic", "Curse", "Disease", "Poison", "Stealth", "Invisibility", null, null, "Enrage"];
+
+        return $dispType[$id] ?? $id;
+    } elseif ($aura === 44 || $aura === 59 || $aura === 102 || $aura === 131 || $aura === 168 || $aura === 180) {
+        $crType = ["Uncategorized", "Beast", "Dragonkin", "Demon", "Elemental", "Giant", "Undead", "Humanoid",];
+
+        $res = [];
+        foreach ($crType as $k => $str) {
+            if ($k && ($id & (1 << $k - 1))) {
+                $res[] = $str;
+            }
+        }
+
+        return $res ? implode(", ", $res) : $crType[$id] ?? $id;
+    } elseif ($aura === 45) {
+        $CI =& get_instance();
+
+        return $CI->config->item('lock_type')[$id] ?? $id;
+    } elseif ($aura === 56 || $aura === 78) { // Mount
+        $CI =& get_instance();
+
+        return $CI->Database_model->getCreatureName($id, $patch); //creature name, later add npc page when implemented
+    } elseif ($aura === 75) {
+        $lang = [1 => "Orcish", 2 => "Darnassian", 3 => "Taurahe", 6 => "Dwarvish", 7 => "Common", 8 => "Demonic"];
+
+        return $lang[$id] ?? $id;
+    } elseif ($aura === 77 || $aura === 117 || $aura === 232 || $aura === 234 || $aura === 255 || $aura === 276) {
+        $CI =& get_instance();
+
+        return $CI->config->item('spell_mechanics')[$id] ?? $id;
+    } elseif ($aura === 139 || $aura === 190) {
+        $CI =& get_instance();
+
+        return $CI->Database_model->getFactionName($id, $patch);
+    } elseif ($aura === 147) {
+        $CI =& get_instance();
+
+        $mechType = $CI->config->item('spell_mechanics');
+
+        $res = [];
+        foreach ($mechType as $k => $str) {
+            if ($k && ($id & (1 << $k - 1))) {
+                $res[] = $str;
+            }
+        }
+
+        return $res ? implode(", ", $res) : $mechType[$id] ?? $id;
+    } elseif ($aura === 10
+              || $aura === 13
+              || $aura === 14
+              || $aura === 22
+              || $aura === 39
+              || $aura === 40
+              || $aura === 50
+              || $aura === 57
+              || $aura === 69
+              || $aura === 71
+              || $aura === 72
+              || $aura === 73
+              || $aura === 74
+              || $aura === 79
+              || $aura === 81
+              || $aura === 83
+              || $aura === 87
+              || $aura === 97
+              || $aura === 101
+              || $aura === 115
+              || $aura === 118
+              || $aura === 123
+              || $aura === 135
+              || $aura === 136
+              || $aura === 142
+              || $aura === 143
+              || $aura === 149
+              || $aura === 163
+              || $aura === 174
+              || $aura === 182
+              || $aura === 186
+              || $aura === 194
+              || $aura === 195
+              || $aura === 199
+              || $aura === 229
+              || $aura === 271
+              || $aura === 310
+              || $aura === 237
+              || $aura === 238
+              || $aura === 242
+              || $aura === 259
+              || $aura === 267
+              || $aura === 269
+              || $aura === 285
+              || $aura === 300
+              || $aura === 301
+    ) {
+        return getMagicSchools($id);
+    } elseif ($aura === 30 || $aura === 98) {
+        $CI =& get_instance();
+
+        return $CI->config->item('skilline')[$id] ?? $id;
+    } elseif ($aura === 107 || $aura === 108) {
+        $spellModOpTypes = [
+            "Damage",
+            "Duration",
+            "Threat",
+            "Effect 1",
+            "Charges",
+            "Range",
+            "Radius",
+            "Critical Hit Chance",
+            "All Effects",
+            "Casting Time loss",
+            "Casting Time",
+            "Cooldown",
+            "Effect 2",
+            "Ignore Armor",
+            "Cost",
+            "Critical Damage Bonus",
+            "Chance to Fail",
+            "Jump Targets",
+            "Proc Chance",
+            "Intervall",
+            "Multiplier (Damage)",
+            "Global Cooldown",
+            "Damage over Time",
+            "Effect 3",
+            "Multiplier (Bonus)",
+            null,
+            "Procs per Minute",
+            "Multiplier (Value)",
+            "Chance to Resist Dispel",
+            "Critical Damage Bonus2",
+            "Refund Cost on Fail"
+        ];
+
+        return $spellModOpTypes[$id] ?? $id;
+    }
+
+    return (string)$id;
+}
+
+/**
+ * @param $schoolMask
+ *
+ * @return string
+ */
+function getMagicSchools($schoolMask): string
+{
+    $schoolMask &= 0x7F;
+    $sc         = ["Physical", "Holy", "Fire", "Nature", "Frost", "Shadow", "Arcane"];
+    $tmp        = [];
+    $i          = 0;
+
+    while ($schoolMask) {
+        if ($schoolMask & (1 << $i)) {
+            $tmp[]      = $sc[$i];
+            $schoolMask &= ~(1 << $i);
+        }
+        $i++;
+    }
+
+    return implode(', ', $tmp);
+}
+
+/**
+ * @param  int  $race
+ *
+ * @return int
+ */
+function sideByRaceMask(int $race): int
+{
+    // Any
+    if (! $race || ($race & 0xFF) == 0xFF) {
+        return 3;
+    }
+
+    // Horde
+    if ($race & 0xB2 && ! ($race & 0x4D)) {
+        return 2;
+    }
+
+    // Alliance
+    if ($race & 0x4D && ! ($race & 0xB2)) {
+        return 1;
+    }
+
+    return 3;
+}
+
+/**
+ * @param  int  $id
+ *
+ * @return string
+ */
+function sideByID(int $id): string
+{
+    $sides = [1 => "Alliance", -1 => "Alliance only", 2 => "Horde", -2 => "Horde only", 3 => "Both"];
+
+    return $sides[$id] ?? 'Unknown';
+}
+
+/**
+ * @param  int  $id
+ *
+ * @return string
+ */
+function territoryByTeamID(int $id): string
+{
+    $territory = [0 => "Contested", 2 => "Alliance", 4 => "Horde"];
+
+    return $territory[$id] ?? '';
+}
+
+/**
+ * @param  int  $id
+ *
+ * @return string
+ */
+function zoneCatByMapID(int $id): string
+{
+    if ($id === 0) {
+        return "Eastern Kingdoms";
+    } elseif ($id === 1) {
+        return "Kalimdor";
+    } else {
+        return "Instance";
+    }
+}
+
+/**
+ * @param  int  $id
+ *
+ * @return string
+ */
+function GOTypeByID(int $id): string
+{
+    if ($id === 0) {
+        return "Door";
+    } elseif ($id === 1) {
+        return "Button";
+    } elseif ($id === 2) {
+        return "Questgiver";
+    } elseif ($id === 3) {
+        return "Chest";
+    } elseif ($id === 5) {
+        return "Generic";
+    } elseif ($id === 6) {
+        return "Trap";
+    } elseif ($id === 7) {
+        return "Chair";
+    } elseif ($id === 8) {
+        return "Spell Focus";
+    } elseif ($id === 9) {
+        return "Text";
+    } elseif ($id === 10) {
+        return "Goober";
+    } elseif ($id === 11) {
+        return "Transport";
+    } elseif ($id === 13) {
+        return "Camera";
+    } elseif ($id === 14) {
+        return "Map Object";
+    } elseif ($id === 15) {
+        return "MO Transport";
+    } elseif ($id === 16) {
+        return "Duel Arbitier";
+    } elseif ($id === 17) {
+        return "Fishing Node";
+    } elseif ($id === 18) {
+        return "Ritual";
+    } elseif ($id === 19) {
+        return "Mailbox";
+    } elseif ($id === 20) {
+        return "Auction House";
+    } elseif ($id === 22) {
+        return "Spell Caster";
+    } elseif ($id === 23) {
+        return "Meeting Stone";
+    } elseif ($id === 24) {
+        return "Flag Stand";
+    } elseif ($id === 25) {
+        return "Fishing Hole";
+    } elseif ($id === 26) {
+        return "Flag Drop";
+    } elseif ($id === 29) {
+        return "Capture Point";
+    }
+
+    return "Unknown";
+}
+
+function ordinalNumber(int $number, bool $html = false): string
+{
+    if ($number === 0) {
+        return 'n/a';
+    }
+    $ends = array('th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th');
+    if ((($number % 100) >= 11) && (($number % 100) <= 13)) {
+        return $number . ($html ? '<sup>th</sup>' : 'th');
+    } else {
+        return $number . ($html ? '<sup>' . $ends[$number % 10] . '</sup>' : $ends[$number % 10]);
     }
 }

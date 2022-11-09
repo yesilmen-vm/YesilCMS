@@ -313,7 +313,7 @@ $config['cache_path'] = '';
 |	             of query parameters.
 |
 */
-$config['cache_query_string'] = false;
+$config['cache_query_string'] = true;
 
 /*
 |--------------------------------------------------------------------------
@@ -456,6 +456,8 @@ $config['csrf_cookie_name']  = 'csrf_yesilcms_cookie';
 $config['csrf_expire']       = 7200;
 $config['csrf_regenerate']   = true;
 $config['csrf_exclude_uris'] = array();
+// ### to Exclude API requests use this line instead of above.
+// $config['csrf_exclude_uris'] = array('^[a-z]{2}\/api\/v1/.*+$');
 
 /*
 |--------------------------------------------------------------------------

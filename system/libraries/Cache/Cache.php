@@ -41,6 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * CodeIgniter Caching Class
  *
+ * @property CI_Cache_redis $redis
  * @package		CodeIgniter
  * @subpackage	Libraries
  * @category	Core

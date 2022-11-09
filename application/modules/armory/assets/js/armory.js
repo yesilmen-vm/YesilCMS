@@ -55,6 +55,9 @@ const CHARACTER_PART = {
     Earring: undefined
 };
 
+if ($(window).width() < 480) {
+    document.getElementById('patch').options[0].text = 'Choose Patch';
+}
 
 $('.tooltipLink').hover(function () {
     var title = $(this).attr('data-tooltip');
@@ -129,7 +132,7 @@ async function getDisplaySlot(item, slot, displayId) {
             displayId: displayId
         };
     } catch (e) {
-        const resp = await fetch(baseURL + `/en/api/v1/item/newdisplayid/${item}`).then((response) => response.json());
+        const resp = await fetch(baseURL + `/api/v1/item/newdisplayid/${item}`).then((response) => response.json());
         const res = resp.data ? resp.data : resp;
         if (res.ItemDisplayInfoID !== displayId) {
             return {
