@@ -8,7 +8,7 @@
                 <div class="uk-card uk-card-default uk-margin-small">
                     <div class="uk-card-header">
                         <div class="uk-grid uk-grid-small" data-uk-grid>
-                            <img class="uk-margin-small-bottom" src="<?= base_url() . 'assets/images/news/' . $this->news_model->getNewImage($idlink); ?>" alt="<?= $this->news_model->getNewTitle($idlink); ?>">
+                            <img class="uk-width-1-1 uk-margin-small-bottom news-img" src="<?= base_url() . 'assets/images/news/' . $this->news_model->getNewImage($idlink); ?>" alt="<?= $this->news_model->getNewTitle($idlink); ?>">
                             <div class="uk-width-expand@s">
                                 <h3 class="uk-h3 uk-text-bold"><i class="fas fa-newspaper"></i> <?= $this->news_model->getNewTitle($idlink); ?></h3>
                             </div>

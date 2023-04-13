@@ -294,6 +294,10 @@ h6,
   transition: all ease-in 0.2s;
 }
 
+.news-img {
+  max-height:500px;
+}
+
 .uk-card-media-left:after {
   content: "";
   position: absolute;

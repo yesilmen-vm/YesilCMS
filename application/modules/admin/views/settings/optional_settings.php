@@ -220,6 +220,7 @@
                 $this->email->initialize($config);
                 $this->email->set_mailtype("html");
                 $this->email->set_newline("\r\n");
+                $this->email->set_crlf( "\r\n" ); 
 
                 $this->email->from($this->config->item('email_settings_sender'), $this->config->item('email_settings_sender_name'));
                 $this->email->to($this->config->item('email_settings_sender'));

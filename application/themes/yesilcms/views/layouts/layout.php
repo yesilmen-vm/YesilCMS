@@ -130,7 +130,9 @@
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </ul>
-                    <a class="uk-navbar-toggle uk-hidden@m" uk-navbar-toggle-icon href="#mobile" uk-toggle></a>
+                    <a class="uk-navbar-toggle uk-hidden@m" href="#mobile" uk-toggle>
+                        <span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left">Menu</span>
+                    </a>
                 </div>
                 <div class="uk-navbar-right">
                     <?php if ($this->wowauth->isLogged()) : ?>

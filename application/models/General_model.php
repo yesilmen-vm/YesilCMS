@@ -680,6 +680,7 @@ class General_model extends CI_Model
         $this->email->initialize($config);
         $this->email->set_mailtype("html");
         $this->email->set_newline("\r\n");
+        $this->email->set_crlf( "\r\n" ); 
 
         $this->email->from(
             $this->config->item('email_settings_sender'),
