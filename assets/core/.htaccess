@@ -1,4 +1,5 @@
 <FilesMatch "\.(php|php\.)$"> 
-  Order Allow,Deny
-  Deny from all
+  Require all denied
+  #Order Allow,Deny
+  #Deny from all
 </FilesMatch>
