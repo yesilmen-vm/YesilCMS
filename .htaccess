@@ -62,7 +62,8 @@
 
 # Deny access to all .htaccess files
 <Files ~ "^.*\.([Hh][Tt][Aa])">
-  order allow,deny
-  deny from all
-  satisfy all
+  Require all denied
+  #order allow,deny
+  #deny from all
+  #satisfy all
 </Files>
