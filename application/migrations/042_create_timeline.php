@@ -30,7 +30,7 @@ class Migration_create_timeline extends CI_Migration
             ),
             'date'        => array(
                 'type'    => 'DATE',
-                'default' => false,
+                'default' => 'CURDATE(),
                 'comment' => 'YYYY-MM-DD'
             ),
             'image'       => array(
