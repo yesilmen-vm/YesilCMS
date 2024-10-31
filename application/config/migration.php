@@ -70,7 +70,7 @@ $config['migration_auto_latest'] = false;
 | be upgraded / downgraded to.
 |
 */
-$config['migration_version'] = 42;
+$config['migration_version'] = 44;
 
 /*
 |--------------------------------------------------------------------------

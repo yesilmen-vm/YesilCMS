@@ -28,7 +28,7 @@ $config['seo_imgurl'] = '';
  * FALSE = Disabled
  *
  */
-$config['seo_meta_enable'] = false;
+$config['seo_meta_enable'] = true;
 
 /**
  *
@@ -37,7 +37,7 @@ $config['seo_meta_enable'] = false;
  * Used by Metatags, Open Graph and Twitter Card
  *
 */
-$config['seo_meta_desc'] = '';
+$config['seo_meta_desc'] = 'YesilCMS Demo - Tailored for vMaNGOS, Built for Community.';
 
 /**
  *
@@ -46,7 +46,7 @@ $config['seo_meta_desc'] = '';
  * Used only Metatags
  *
  */
-$config['seo_meta_keywords'] = '';
+$config['seo_meta_keywords'] = 'vmangos cms, cms, wow, vanilla, mangos, emulator';
 
 /**
  *
@@ -56,7 +56,7 @@ $config['seo_meta_keywords'] = '';
  * FALSE = Disabled
  *
  */
-$config['seo_twitter_enable'] = false;
+$config['seo_twitter_enable'] = true;
 
 /**
  *
@@ -66,7 +66,7 @@ $config['seo_twitter_enable'] = false;
  * FALSE = Disabled
  *
  */
-$config['seo_og_enable'] = false;
+$config['seo_og_enable'] = true;
 
 /**
  *

@@ -61,14 +61,15 @@
                             <div class="model-area uk-width-expand" id="model3D"></div>
                             <div class="uk-position-bottom-center" style="--uk-position-margin-offset: 0px" uk-margin>
                                 <!-- style for ngx pagespeed fix -->
-                                <button id='show3DModelFast' class="uk-button uk-button-default uk-button-small model-btn-sm model-btn-<?= strtolower($character['faction']) ?> uk-width-auto">3D Model (Fast)</button>
+                                <button id='show3DModelFast' class="uk-button uk-button-default uk-button-small model-btn-sm model-btn-<?= strtolower($character['faction']) ?> uk-width-auto uk-first-column" title="Note: Some items may not display accurately due to different visual IDs in Vanilla and Classic. For precise results, consider using the detailed model view.">3D Model (Fast)</button>
                                 <br class="uk-hidden@m"/>
-                                <button id='show3DModelDetailed' class="uk-button uk-button-default uk-button-small model-btn-<?= strtolower($character['faction']) ?> uk-width-auto">3D Model (Detailed)</button>
+                                <button id='show3DModelDetailed' class="uk-button uk-button-default uk-button-small model-btn-<?= strtolower($character['faction']) ?> uk-width-auto" title="This option attempts to accurately recreate the character's 3D model.">3D Model (Detailed)</button>
                                 <div class="animation-dropdown">
                                         <span class="model-buttonspan">
-                                            <button id='playAnim' class="fa-solid fa-play" style="display: none;"></button>
-                                            <button id='pauseAnim' onclick="model.setAnimPaused(true)" class="fa-solid fa-pause"></button>
-                                            <button id='fullScreen' onclick="model.setFullscreen(true)" class="fa-solid fa-expand uk-margin-small-left"></button>
+                                            <button id='playAnim' class="fa-solid fa-play" style="display: none;" title="Play Animation"></button>
+                                            <button id='pauseAnim' onclick="model.setAnimPaused(true)" class="fa-solid fa-pause" title="Pause Animation"></button>
+                                            <button id='fullScreen' onclick="model.setFullscreen(true)" class="fa-solid fa-expand uk-margin-small-left" title="Full Screen"></button>
+                                            <button id='resetView' class="fa-solid fa-undo uk-margin-small-left" title="Reset View" onclick="resetView()"></button>
                                         </span>
                                     <select id="animationSelect" class="uk-select uk-form-small model-btn-<?= strtolower($character['faction']) ?>" onchange="model.setAnimation(this.value)">
                                         <option value="" selected disabled hidden>Choose animation</option>
@@ -363,4 +364,4 @@
     };
     const equipments = <?= count($character['equipped_item_ids']) === 0 ? '[]' . PHP_EOL : $character['equipped_item_id_model'] ?>;
 </script>
-<script type="text/javascript" src="https://wow.zamimg.com/modelviewer/classic/viewer/viewer.min.js"></script>
+<script type="text/javascript" src="https://modelviewer.yesilcms.page/modelviewer/classic/viewer/viewer.min.js"></script>

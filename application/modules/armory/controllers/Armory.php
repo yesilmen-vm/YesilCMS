@@ -91,7 +91,7 @@ class Armory extends MX_Controller
 
             $character['equipped_item_ids']      = $equippedItemIDs;
             $character['equipped_item_model']    = $this->armory_model->getCharEquipDisplayModel($id, $character['equipped_item_ids'], $character['class'], false, $patch);
-            $character['equipped_item_id_model'] = json_encode($this->armory_model->getCharEquipDisplayModel($id, $character['equipped_item_ids'], $character['class'], true, $patch));
+            $character['equipped_item_id_model'] = json_encode($this->armory_model->getCharEquipDisplayModel($id, $character['equipped_item_ids'], $character['class'], true, $patch),JSON_PRETTY_PRINT | JSON_NUMERIC_CHECK);
             $character['enchanted_items']        = $this->armory_model->getEnchantInfo($currentRealm, $id, $equippedItemIDs);
 
             if ($character['enchanted_items']) {

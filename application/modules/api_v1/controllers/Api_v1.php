@@ -33,22 +33,20 @@ class Api_v1 extends
         ], REST_Controller::HTTP_OK);
     }
 
-    // This list can also be installed to own database by downloading it from WoWTools
     public function classic_displayid_get($id = 0)
     {
-        $build = '1.14.3.44403';
         if ($id > 0) {
             $classicDisplayCache = $this->wowgeneral->getRedisCMS() ? $this->cache->redis->get('itemClassicDisplayID_' . $id) : false;
             if ($classicDisplayCache) {
                 $status = REST_Controller::HTTP_OK;
-                $data   = ['ItemDisplayInfoID' => (int)$classicDisplayCache];
+                $data   = ['newDisplayId' => (int)$classicDisplayCache];
             } else {
-                $appearanceId = json_decode($this->getUrlContents('https://wow.tools/dbc/api/peek/itemmodifiedappearance?build=' . $build . '&col=ItemID&val=' . $id))->values->ItemAppearanceID ?? 0;
+                $appearanceId = $this->wowgeneral->getModifiedItemAppearance($id, 10);
                 if ($appearanceId > 0) {
-                    $displayId = json_decode($this->getUrlContents('https://wow.tools/dbc/api/peek/itemappearance?build=' . $build . '&col=ID&val=' . $appearanceId))->values->ItemDisplayInfoID ?? 0;
+                    $displayId = $this->wowgeneral->getItemAppearance($appearanceId, 10);;
                     if ($displayId > 0) {
                         $status = REST_Controller::HTTP_OK;
-                        $data   = ['ItemDisplayInfoID' => (int)$displayId];
+                        $data   = ['newDisplayId' => (int)$displayId];
                         if ($this->wowgeneral->getRedisCMS()) {
                             // Cache for 1 day
                             $this->cache->redis->save('itemClassicDisplayID_' . $id, $displayId, 86400);

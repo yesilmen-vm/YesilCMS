@@ -85,43 +85,47 @@ class Home extends MX_Controller
 
     public function setconfig()
     {
-        $this->load->library('migration');
-
-        $data = [
-            'name'       => $this->input->post('website_name'),
-            'invitation' => $this->input->post('website_invitation'),
-            'realmlist'  => $this->input->post('website_realmlist'),
-            'expansion'  => $this->input->post('website_expansion'),
-            'bnet'       => $this->input->post('website_bnet'),
-            'emulator'   => $this->input->post('website_emulator')
-        ];
-
-        $realmid   = $this->input->post('realm_id');
-        $char_host = $this->input->post('character_hostname');
-        $char_db   = $this->input->post('character_database');
-        $char_user = $this->input->post('character_username');
-        $char_pass = $this->input->post('character_password');
-        $soap_host = $this->input->post('soap_hostname');
-        $soap_port = $this->input->post('soap_port');
-        $soap_user = $this->input->post('soap_username');
-        $soap_pass = $this->input->post('soap_password');
-        $emulator  = $this->input->post('emulator');
-
-        // If OS is Windows, redis is not officially supported, so don't add it to checklist
-        if (! strcasecmp(substr(PHP_OS, 0, 3), 'WIN') == 0) {
-            $data['redis'] = $this->input->post('website_redis');
-        } else {
-            $data['redis'] = false;
-        }
-
-        $this->home_model->updateconfigs($data);
-
-        if ($this->migration->current() === false) {
-            show_error($this->migration->error_string());
-        } else {
-            $this->home_model->insertRealm($char_host, $char_user, $char_pass, $char_db, $realmid, $soap_host, $soap_user, $soap_pass, $soap_port, $emulator);
-            sleep(3); //make sure redirected to correct location
+        if ($this->config->item('migrate_status') === false) {
             redirect(base_url());
+        }else{
+            $this->load->library('migration');
+
+            $data = [
+                'name'       => $this->input->post('website_name'),
+                'invitation' => $this->input->post('website_invitation'),
+                'realmlist'  => $this->input->post('website_realmlist'),
+                'expansion'  => $this->input->post('website_expansion'),
+                'bnet'       => $this->input->post('website_bnet'),
+                'emulator'   => $this->input->post('website_emulator')
+            ];
+
+            $realmid   = $this->input->post('realm_id');
+            $char_host = $this->input->post('character_hostname');
+            $char_db   = $this->input->post('character_database');
+            $char_user = $this->input->post('character_username');
+            $char_pass = $this->input->post('character_password');
+            $soap_host = $this->input->post('soap_hostname');
+            $soap_port = $this->input->post('soap_port');
+            $soap_user = $this->input->post('soap_username');
+            $soap_pass = $this->input->post('soap_password');
+            $emulator  = $this->input->post('emulator');
+
+            // If OS is Windows, redis is not officially supported, so don't add it to checklist
+            if (! strcasecmp(substr(PHP_OS, 0, 3), 'WIN') == 0) {
+                $data['redis'] = $this->input->post('website_redis');
+            } else {
+                $data['redis'] = false;
+            }
+
+            $this->home_model->updateconfigs($data);
+
+            if ($this->migration->current() === false) {
+                show_error($this->migration->error_string());
+            } else {
+                $this->home_model->insertRealm($char_host, $char_user, $char_pass, $char_db, $realmid, $soap_host, $soap_user, $soap_pass, $soap_port, $emulator);
+                sleep(3); //make sure redirected to correct location
+                redirect(base_url());
+            }
         }
     }
 }

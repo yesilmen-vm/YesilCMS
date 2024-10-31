@@ -76,7 +76,7 @@ class Realm_model extends CI_Model
                 }
             }
 
-            if (fsockopen($host, $port, $errno, $errstr, 1.5)) {
+            if (fsockopen($host, $port, $errno, $errstr, 1.5) && $multiRealm->conn_id) {
                 $this->RealmStatus = true;
             } else {
                 $this->RealmStatus = false;
@@ -363,6 +363,12 @@ class Realm_model extends CI_Model
         $this->multiRealm = $multiRealm;
         $races            = array('1', '3', '4', '7', '11', '22', '25');
 
+        // Ensure the connection is active
+        if (!$multiRealm->conn_id) {
+            log_message('error', 'Database connection is not active.');
+            return '0'; // Return '0' if the connection is not active
+        }
+
         $qq = $this->multiRealm->select('guid')->where_in('race', $races)->where('online', '1')->get('characters');
 
         if ($qq->num_rows()) {
@@ -382,6 +388,12 @@ class Realm_model extends CI_Model
         $this->multiRealm = $multiRealm;
         $races            = array('2', '5', '6', '8', '10', '9', '26');
 
+        // Ensure the connection is active
+        if (!$multiRealm->conn_id) {
+            log_message('error', 'Database connection is not active.');
+            return '0'; // Return '0' if the connection is not active
+        }
+
         $qq = $this->multiRealm->select('guid')->where_in('race', $races)->where('online', '1')->get('characters');
 
         if ($qq->num_rows()) {
@@ -399,6 +411,12 @@ class Realm_model extends CI_Model
     public function getAllCharactersOnline($multiRealm): string
     {
         $this->multiRealm = $multiRealm;
+
+        // Ensure the connection is active
+        if (!$multiRealm->conn_id) {
+            log_message('error', 'Database connection is not active.');
+            return '0'; // Return '0' if the connection is not active
+        }
 
         $qq = $this->multiRealm->select('online')->where('online', '1')->get('characters');
 

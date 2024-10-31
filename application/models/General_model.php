@@ -16,6 +16,58 @@ class General_model extends CI_Model
     }
 
     /**
+     * @param  int  $id
+     * @param  int  $patch
+     *
+     * @return string
+     */
+    public function getItemAppearance(int $id, int $patch = 10): string
+    {
+        $itemIDCache = $this->wowgeneral->getRedisCMS() ? $this->cache->redis->get('ItemDisplayInfoID_' . $id . '-P_' . $patch) : false;
+
+        if ($itemIDCache) {
+            $item_display_info_id = $itemIDCache;
+        } else {
+            $item_display_info_id = $this->db->select('ItemDisplayInfoID')->where('ID', $id)->limit(1)->get('api_item_appearance t1')->row('ItemDisplayInfoID');
+
+            if ($item_display_info_id) {
+                if ($this->wowgeneral->getRedisCMS()) {
+                    // Cache for 30 day
+                    $this->cache->redis->save('ItemDisplayInfoID_' . $id . '-P_' . $patch, $item_display_info_id, 60 * 60 * 24 * 30);
+                }
+            }
+        }
+
+        return $item_display_info_id ?? 0;
+    }
+
+    /**
+     * @param  int  $id
+     * @param  int  $patch
+     *
+     * @return string
+     */
+    public function getModifiedItemAppearance(int $id, int $patch = 10): string
+    {
+        $itemIDCache = $this->wowgeneral->getRedisCMS() ? $this->cache->redis->get('itemModifiedAppearanceID_' . $id . '-P_' . $patch) : false;
+
+        if ($itemIDCache) {
+            $item_id = $itemIDCache;
+        } else {
+            $item_id = $this->db->select('itemAppearanceID')->where('ItemID', $id)->limit(1)->get('api_item_modified_appearance t1')->row('itemAppearanceID');
+
+            if ($item_id) {
+                if ($this->wowgeneral->getRedisCMS()) {
+                    // Cache for 30 day
+                    $this->cache->redis->save('itemModifiedAppearanceID_' . $id . '-P_' . $patch, $item_id, 60 * 60 * 24 * 30);
+                }
+            }
+        }
+
+        return $item_id ?? 0;
+    }
+
+    /**
      * @return int
      */
     public function getTimestamp(): int

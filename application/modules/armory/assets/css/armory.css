@@ -914,5 +914,10 @@
   -moz-animation: fadeIn 1s infinite alternate;
   -o-animation: fadeIn 1s infinite alternate;
   animation: fadeIn 1s infinite alternate;
+}
 
+#placeholder {
+  display: block;
+  opacity: 0;
+  transition: opacity 1s ease-in;
 }
